@@ -8,17 +8,39 @@ public class PlayerTest {
 
 	@Test
 	public void testconstructor() {
-		Player b=new Player();
+		Player b = new Player();
 	}
 	@Test
-	public void testgetNombre() {
-		Player b=new Player("Adri");
-		String res_0 ="Adri";
-		assertEquals(res_0,b.getNombre());
+	public void iniciarTableroInfo() {
+		Player b = new Player();
+		b.iniciarTableroInfo();
+		String [][] tablero=b.getTableroInfo();
+		assertEquals("[-]", tablero[0][0]);
+		assertEquals("[-]", tablero[0][9]);
+		assertEquals("[-]", tablero[9][0]);
+		assertEquals("[-]", tablero[9][9]);
+		assertEquals("[-]", tablero[5][4]);
 	}
 	@Test
-	public void testsetNombre() {
-		Player b=new Player();
+	public void testDisparar() {
+		Board b = new Board();
+		Player p = new Player();
+		p.iniciarTableroInfo();
+		String [][] tablero=p.getTableroInfo();
+		p.disparar(b, 0, 0);
+		p.disparar(b, 9, 9);
+		p.disparar(b, 5, 4);
+		p.disparar(b, 13, 3);
+		assertEquals("[O]", tablero[0][0]);
+		assertEquals("[-]", tablero[0][9]);
+		assertEquals("[-]", tablero[9][0]);
+		assertEquals("[O]", tablero[9][9]);
+		assertEquals("[O]", tablero[5][4]);
+		
+	}
+	@Test
+	public void testsetygetNombre() {
+		Player b = new Player();
 		b.setNombre("Arnau");
 		String res_0 = "Arnau";
 		assertEquals(res_0,b.getNombre());
@@ -26,7 +48,7 @@ public class PlayerTest {
 
 	@Test
 	public void testsetygetTurno() {
-		Player b=new Player();
+		Player b = new Player();
 		b.setTurno(2);
 		int res_0 = 2;
 		assertEquals(res_0,b.getTurno());

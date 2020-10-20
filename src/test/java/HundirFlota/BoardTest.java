@@ -2,6 +2,7 @@ package HundirFlota;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class BoardTest {
@@ -12,7 +13,7 @@ public class BoardTest {
 		String res_0 = "Hola"; 
 		assertEquals(res_0,b.getBoard()); 
 	}
-	@Test
+
 	public void testIniciar() {
 		Board b=new Board();
 		int num_filas=10;
@@ -28,7 +29,7 @@ public class BoardTest {
 		assertEquals(0, tablero[9][9]);
 		assertEquals(0, tablero[5][4]);
 	}
-	@Test
+
 	public void testcrear() {
 		Board b=new Board();
 		b.CrearBarcos();
@@ -45,6 +46,22 @@ public class BoardTest {
 		*/
 		int pos=b.posicionesOcupadas();
 		assertEquals(pos, 27);
+	}
+	@Test
+	public void testMostrarTablero() {
+		String res_0="0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n"
+				+  "0 0 0 0 0 0 0 0 0 0 \n";
+		Board tablero= new Board();
+		Assert.assertEquals(tablero.mostrarTablero(), res_0);
+		
 	}
 	
 

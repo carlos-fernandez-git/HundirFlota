@@ -10,6 +10,16 @@ public class Board {
 	public Board() {
 		this.IniciarTablero();
 	}
+	public int getPosicion(int fila,int columna) {
+		return Tablero[fila][columna];
+	}
+	public int getFilas() {
+		return this.filas;
+	}
+	public int getColumnas(){
+		return this.columnas;
+	}
+	
 	public void IniciarTablero() {
 		this.filas=10;
 		this.columnas=10;
@@ -20,9 +30,7 @@ public class Board {
 			}
 		}
 	}
-	public void BuscarPosicion() {
-		
-	}
+
 
 	public void CrearBarcos() {
 		//Donde se establezca un barco hay que decirle a traves de la clase posicion que tipo de barco contiene
@@ -147,6 +155,16 @@ public class Board {
 	}
 	public int[][] getTablero() {
 		return Tablero;
+	}
+	public String mostrarTablero() {
+		String tablero="";
+		for(int i=0;i<this.filas;i++) {
+			for(int j=0; j<this.columnas;j++) {
+				tablero = tablero+Tablero[i][j]+" ";
+			}
+			tablero=tablero+"\n";
+		}
+		return tablero;
 	}
 
 	public int posicionesOcupadas() {
