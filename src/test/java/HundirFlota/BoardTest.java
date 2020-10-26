@@ -121,6 +121,31 @@ public class BoardTest {
 		assertTrue(res12);
 		
 	}
+	@Test
+	public void testCheckSpace() {
+		//The user can not put boats together in the same direction
+		Board b=new Board();
+		MockOb mock=new MockOb();
+		int[][] a=mock.getTablero(2);
+		b.setTablero(a);
+		System.out.println(b.mostrarTablero());
+		//Portaviones
+		boolean value=b.checkSpace(0, 5, 5);
+		assertTrue(value);
+		boolean value5=b.checkSpace(0, 6, 5);
+		assertTrue(value5);
+		boolean value6=b.checkSpace(0, 7, 5);
+		assertFalse(value6);
+		boolean value2=b.checkSpace(1, 0, 5);
+		assertFalse(value2);
+		//At this point we discover that the checkSpaceTest has to be called from the insert
+		//boatFirstPosition to tell the user the if the boat can be landed there although the 
+		//firstPosition is empty
+		//Knowing that, we can reduce the test to values inside the limits of the board, the other values
+		//are checked in the function InsertBoatFirstPosition
+		
+		
+	}
 
 
 

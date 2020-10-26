@@ -192,9 +192,64 @@ public class Board {
 		}else if(this.getPosicion(fila, columna)!=0) {
 				return false;
 		}else {
+			//Call to checkSpace
 			return true;
 		}
 		
+	}
+	public boolean checkSpace(int fila, int columna, int BoatLeng) {
+		//Vertical Space
+		Boolean find=true;
+		if(fila+4<10) {
+			if(columna+1<10) {
+				if(Tablero[fila][columna+1]!=0 && Tablero[fila+4][columna+1]!=0) {
+					find=false;
+				}
+			}
+			if(columna-1>=0) {
+				if(Tablero[fila][columna-1]!=0 && Tablero[fila+4][columna-1]!=0) {
+					find=false;
+				}
+			}
+		}
+		if(fila-4>=0) {
+			if(columna-1>=0){
+				if(Tablero[fila][columna-1]!=0 && Tablero[fila-4][columna-1]!=0) {
+					find=false;
+				}
+			}
+			if(columna+1<10) {
+				if(Tablero[fila][columna+1]!=0 && Tablero[fila-4][columna+1]!=0) {
+					find=false;
+				}
+			}
+		}
+		//Horizontal Space
+		if(columna+4<10) {
+			if(fila+1<10) {
+				if(Tablero[fila+1][columna]!=0 && Tablero[fila+1][columna+4]!=0) {
+					find=false;
+				}
+			}
+			if(fila-1>=0) {
+				if(Tablero[fila-1][columna]!=0 && Tablero[fila-1][columna+4]!=0) {
+					find=false;
+				}
+			}
+		}
+		if(columna-4>=0) {
+			if(fila+1<10){
+				if(Tablero[fila+1][columna]!=0 && Tablero[fila+1][columna-4]!=0) {
+					find=false;
+				}
+			}
+			if(fila-1>=0) {
+				if(Tablero[fila-1][columna]!=0 && Tablero[fila-1][columna-4]!=0) {
+					find=false;
+				}
+			}
+		}
+		return find;
 	}
 
 	
