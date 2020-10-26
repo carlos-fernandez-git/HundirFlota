@@ -9,12 +9,6 @@ import org.junit.Test;
 public class BoardTest {
 
 	@Test
-	public void testget() {
-		Board b=new Board();
-		String res_0 = "Hola"; 
-		assertEquals(res_0,b.getBoard()); 
-	}
-
 	public void testIniciar() {
 		Board b=new Board();
 		int num_filas=10;
@@ -93,6 +87,40 @@ public class BoardTest {
 		
 	}
 	
+	@Test
+	public void testInsertBoats1() {
+		Board b=new Board();
+		//When Board is empty
+		boolean res=b.insertBoatfirstpos(0, 0);
+		assertTrue(res);
+		boolean res2=b.insertBoatfirstpos(0, 9);
+		assertTrue(res2);
+		boolean res3=b.insertBoatfirstpos(9, 0);
+		assertTrue(res3);
+		boolean res4=b.insertBoatfirstpos(9, 9);
+		assertTrue(res4);
+		boolean res5=b.insertBoatfirstpos(4, 5);
+		assertTrue(res5);
+		boolean res6=b.insertBoatfirstpos(-1, 0);
+		assertFalse(res6);
+		boolean res7=b.insertBoatfirstpos(0, 10);
+		assertFalse(res7);
+		boolean res8=b.insertBoatfirstpos(10, 0);
+		assertFalse(res8);
+		boolean res9=b.insertBoatfirstpos(0, 10);
+		assertFalse(res9);
+		//When the position choosed is occupied
+		MockOb mock=new MockOb();
+		int[][] a=mock.getTablero(1);
+		b.setTablero(a);
+		boolean res10=b.insertBoatfirstpos(0, 1);
+		assertFalse(res10);
+		boolean res11=b.insertBoatfirstpos(0, 4);
+		assertFalse(res11);
+		boolean res12=b.insertBoatfirstpos(0, 5);
+		assertTrue(res12);
+		
+	}
 
 
 

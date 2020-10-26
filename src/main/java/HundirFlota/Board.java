@@ -155,9 +155,7 @@ public class Board {
 		}
 	}
 	*/
-	public String getBoard() {
-		return "Hola";
-	}
+
 	public int[][] getTablero() {
 		return Tablero;
 	}
@@ -187,7 +185,17 @@ public class Board {
 	public void setTablero(int[][] a) {
 		Tablero=a;
 	}
-	
+	//Check if the user can insert a boat here
+	public boolean insertBoatfirstpos(int fila, int columna) {
+		if(fila<0 || fila>9 || columna<0 || columna>9) {
+			return false;
+		}else if(this.getPosicion(fila, columna)!=0) {
+				return false;
+		}else {
+			return true;
+		}
+		
+	}
 
 	
 	
