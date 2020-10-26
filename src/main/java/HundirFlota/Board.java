@@ -30,8 +30,12 @@ public class Board {
 			}
 		}
 	}
+	
 
-
+	//First version of the function Create Boats, This function is so complex and needs so conditional expressions,
+	//seeying that the test created for this function always find errors we decide to descompose
+	//the function into another functions to controllate better the events and test it at small scale.
+	/*
 	public void CrearBarcos() {
 		//Donde se establezca un barco hay que decirle a traves de la clase posicion que tipo de barco contiene
 		String barcos[][];
@@ -150,6 +154,7 @@ public class Board {
 			}
 		}
 	}
+	*/
 	public String getBoard() {
 		return "Hola";
 	}
@@ -166,7 +171,7 @@ public class Board {
 		}
 		return tablero;
 	}
-
+	
 	public int posicionesOcupadas() {
 		int pos=0;
 		for(int i=0;i<filas;i++) {
@@ -178,6 +183,11 @@ public class Board {
 		}
 		return pos;
 	}
+	//To test with custom boards
+	public void setTablero(int[][] a) {
+		Tablero=a;
+	}
+	
 
 	
 	
