@@ -56,11 +56,32 @@ public class MockOb  {
 		Tablero4[9][0]=1;
 		Tablero4[0][0]=1;
 		boards.add(Tablero4);
+		
+		//To test the other cases on checKSpace
+		int Tablero5[][];
+		Tablero5=new int[10][10];
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				Tablero5[i][j]=0;
+			}
+		}
+		for(int x=4;x<10;x++) {
+			Tablero5[4][x]=1;
+		}
+
+		for(int k=1;k<6;k++) {
+			Tablero5[2][k]=1;
+		}
+		for(int z=4;z<9;z++) {
+			Tablero5[z][1]=1;
+		}
+		boards.add(Tablero5);
+		
 	}
 	
 
 
-	public int[][] getTablero(int param) {//corretgir
+	public int[][] getTablero(int param) {
 		//System.out.println(boards.size());
 		return (int[][]) boards.get(param);
 	}

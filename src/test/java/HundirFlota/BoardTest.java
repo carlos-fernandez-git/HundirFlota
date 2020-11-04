@@ -130,23 +130,94 @@ public class BoardTest {
 		b.setTablero(a);
 		System.out.println(b.mostrarTablero());
 		//Portaviones
-		boolean value=b.checkSpace(0, 5, 5);
+		boolean value=b.checkSpace(0, 5, 5);  //vertical space from first line true (nearest to another boat)
 		assertTrue(value);
-		boolean value5=b.checkSpace(0, 6, 5);
+		boolean value5=b.checkSpace(0, 6, 5);	//vertical space from first line true
 		assertTrue(value5);
-		boolean value6=b.checkSpace(0, 7, 5);
+		boolean value6=b.checkSpace(0, 7, 5);	//vertical space from first line (with another boat at the same direction in the right column)
 		assertFalse(value6);
-		boolean value2=b.checkSpace(1, 0, 5);
+		boolean value2=b.checkSpace(1, 0, 5);		//horizontal space false (another boat at the same direction in a line updown)
 		assertFalse(value2);
 		//At this point we discover that the checkSpaceTest has to be called from the insert
-		//boatFirstPosition to tell the user the if the boat can be landed there although the 
+		//boatFirstPosition to tell the user if the boat can be landed there although the 
 		//firstPosition is empty
 		//Knowing that, we can reduce the test to values inside the limits of the board, the other values
 		//are checked in the function InsertBoatFirstPosition
 		
+		//Testing the coverage of the board class at this point we can see that this function is coverage
+		//at 55 per cent, so we have to add more sentences to complete the full coverage
+		
+		//vertical space left false
+		boolean value7=b.checkSpace(0, 9, 5);
+		assertFalse(value7);
+		
+		//vertical space from last line true
+		boolean value8=b.checkSpace(9, 0, 5);
+		assertTrue(value8);
+		
+		//vertical space from a middle line true
+		boolean value9=b.checkSpace(9, 4, 5);
+		assertTrue(value9);
+		
+		//Horizontal space from last line true
+		boolean value10=b.checkSpace(9, 9, 5);
+		assertTrue(value10);
+		
+		////Horizontal space from middle line left true
+		boolean value11=b.checkSpace(7, 6, 5);
+		assertTrue(value11);
+		
+		//New board to test the other cases
+		Board b2=new Board();
+		MockOb mock2=new MockOb();
+		int[][] a2=mock2.getTablero(4);
+		b2.setTablero(a2);
+		System.out.println(b2.mostrarTablero());
+		
+		//Horizontal space left line false up
+		boolean value12=b2.checkSpace(3, 9, 5);
+		assertFalse(value12);
+				
+		////Horizontal space left line down false
+		boolean value13=b2.checkSpace(5, 9, 5);
+		assertFalse(value13);
+		
+		//vertical space left false from down
+		boolean value14=b2.checkSpace(8, 0, 5);
+		assertFalse(value14);
+				
+		//vertical space right from down false
+		boolean value15=b2.checkSpace(8, 2, 5);
+		assertFalse(value15);
+				
+		//horizontal space up right false
+		boolean value16=b2.checkSpace(1, 1, 5);
+		assertFalse(value16);
+		
+		//Coverage 64% at this point we need to check the true cases at the conditions
+		
+		//Horizontal space left line true up
+		boolean value17=b2.checkSpace(3, 8, 5);
+		assertTrue(value17);
+				
+		////Horizontal space left line down true
+		boolean value18=b2.checkSpace(5, 8, 5);
+		assertTrue(value18);
+		
+		//vertical space left true from down
+		boolean value19=b2.checkSpace(7, 0, 5);
+		assertTrue(value19);
+				
+		//vertical space right from down false
+		boolean value20=b2.checkSpace(7, 2, 5);
+		assertTrue(value20);
+				
+		//horizontal space up right false
+		boolean value21=b2.checkSpace(0, 1, 5);
+		assertTrue(value21);
 		
 	}
 
-
+	
 
 }
