@@ -65,7 +65,7 @@ public class MockOb  {
 				Tablero5[i][j]=0;
 			}
 		}
-		for(int x=4;x<10;x++) {
+		for(int x=5;x<10;x++) {
 			Tablero5[4][x]=1;
 		}
 
@@ -77,6 +77,41 @@ public class MockOb  {
 		}
 		boards.add(Tablero5);
 		
+		
+		int TableroBuque[][];
+		TableroBuque=new int[10][10];
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				TableroBuque[i][j]=0;
+			}
+		}
+		for(int x=0;x<4;x++) {
+			TableroBuque[0][x]=1;
+		}
+
+		for(int z=0;z<4;z++) {
+			TableroBuque[z][8]=1;
+		}
+		boards.add(TableroBuque);
+		
+		int TableroBuque2[][];
+		TableroBuque2=new int[10][10];
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				TableroBuque2[i][j]=0;
+			}
+		}
+		for(int x=5;x<9;x++) {
+			TableroBuque2[4][x]=1;
+		}
+
+		for(int k=1;k<5;k++) {
+			TableroBuque2[2][k]=1;
+		}
+		for(int z=4;z<8;z++) {
+			TableroBuque2[z][1]=1;
+		}
+		boards.add(TableroBuque2);
 	}
 	
 

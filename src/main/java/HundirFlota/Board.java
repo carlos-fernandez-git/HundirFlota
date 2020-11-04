@@ -198,6 +198,7 @@ public class Board {
 		
 	}
 	public boolean checkSpace(int fila, int columna, int BoatLeng) {
+		if(BoatLeng==5) {
 		//Vertical Space
 		Boolean find=true;
 		if(fila+4<10) {
@@ -250,6 +251,62 @@ public class Board {
 			}
 		}
 		return find;
+		}
+		else if(BoatLeng==4) {
+			//Vertical Space
+			Boolean find=true;
+			if(fila+3<10) {
+				if(columna+1<10) {
+					if(Tablero[fila][columna+1]!=0 && Tablero[fila+3][columna+1]!=0) {
+						find=false;
+					}
+				}
+				if(columna-1>=0) {
+					if(Tablero[fila][columna-1]!=0 && Tablero[fila+3][columna-1]!=0) {
+						find=false;
+					}
+				}
+			}
+			if(fila-3>=0) {
+				if(columna-1>=0){
+					if(Tablero[fila][columna-1]!=0 && Tablero[fila-3][columna-1]!=0) {
+						find=false;
+					}
+				}
+				if(columna+1<10) {
+					if(Tablero[fila][columna+1]!=0 && Tablero[fila-3][columna+1]!=0) {
+						find=false;
+					}
+				}
+			}
+			//Horizontal Space
+			if(columna+3<10) {
+				if(fila+1<10) {
+					if(Tablero[fila+1][columna]!=0 && Tablero[fila+1][columna+3]!=0) {
+						find=false;
+					}
+				}
+				if(fila-1>=0) {
+					if(Tablero[fila-1][columna]!=0 && Tablero[fila-1][columna+3]!=0) {
+						find=false;
+					}
+				}
+			}
+			if(columna-3>=0) {
+				if(fila+1<10){
+					if(Tablero[fila+1][columna]!=0 && Tablero[fila+1][columna-3]!=0) {
+						find=false;
+					}
+				}
+				if(fila-1>=0) {
+					if(Tablero[fila-1][columna]!=0 && Tablero[fila-1][columna-3]!=0) {
+						find=false;
+					}
+				}
+			}
+			return find;
+		}
+		else {return false;}
 	}
 
 	
