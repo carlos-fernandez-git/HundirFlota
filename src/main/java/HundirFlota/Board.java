@@ -194,6 +194,9 @@ public class Board {
 		}else {
 			//Call to checkSpace
 			boolean FreeSpace=checkSpace(fila, columna, BoatLeng);
+			if(FreeSpace==true && BoatLeng==1) {
+				Tablero[fila][columna]=1;
+			}
 			return FreeSpace;
 		}
 		
@@ -333,6 +336,103 @@ public class Board {
 		}
 	}
 
+	public boolean insertBoatLastPosition(int filaIn, int columnaIn, int filaFi, int columnaFi, int BoatLeng) {
+		if(filaFi<0 || filaFi>9 || columnaFi<0 || columnaFi>9) {
+			return false;
+		}else if(this.getPosicion(filaFi, columnaFi)!=0) {
+				return false;
+		}else {
+			if(filaIn!=filaFi && columnaFi!=columnaIn) {
+				return false;
+			}
+			else {
+				//Insert right
+				if(columnaFi>columnaIn) {
+					if(columnaFi-columnaIn!=BoatLeng-1) {
+						return false;
+					}else {
+						boolean occuped=false;
+						for(int i=columnaIn; i<=columnaFi; i++) {
+							if(Tablero[filaIn][i]==1) {
+								occuped=true;
+							}
+						}
+						if(occuped==true) {
+							return false;
+						}else {
+							for(int i=columnaIn; i<=columnaFi; i++) {
+								Tablero[filaIn][i]=1;
+							}
+						}			
+					}
+				}
+				//insert left
+				if(columnaFi<columnaIn) {
+					if(columnaIn-columnaFi!=BoatLeng-1) {
+						return false;
+					}else {
+						boolean occuped=false;
+						for(int i=columnaFi; i<=columnaIn; i++) {
+							if(Tablero[filaIn][i]==1) {
+								occuped=true;
+							}
+						}
+						if(occuped==true) {
+							return false;
+						}else {
+							for(int i=columnaFi; i<=columnaIn; i++) {
+								Tablero[filaIn][i]=1;
+							}
+						}
+						
+					}
+				}
+				//insert down
+				if(filaFi>filaIn) {
+					if(filaFi-filaIn!=BoatLeng-1) {
+						return false;
+					}else {
+						boolean occuped=false;
+						for(int i=filaIn; i<=filaFi; i++) {
+							if(Tablero[i][columnaIn]==1) {
+								occuped=true;
+							}
+						}
+						if(occuped==true) {
+							return false;
+						}else {
+							for(int i=filaIn; i<=filaFi; i++) {
+								Tablero[i][columnaIn]=1;
+							}
+						}
+						
+					}
+				}
+				//insert top
+				if(filaIn>filaFi) {
+					if(filaIn-filaFi!=BoatLeng-1) {
+						return false;
+					}else {
+						boolean occuped=false;
+						for(int i=filaFi; i<=filaIn; i++) {
+							if(Tablero[i][columnaIn]==1) {
+								occuped=true;
+							}
+						}
+						if(occuped==true) {
+							return false;
+						}else {
+							for(int i=filaFi; i<=filaIn; i++) {
+								Tablero[i][columnaIn]=1;
+							}
+						}
+						
+					}
+				}
+				return true;
+			}
+		}
+	}
 	
 	
 }

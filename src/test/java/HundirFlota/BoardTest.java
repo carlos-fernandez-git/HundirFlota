@@ -382,4 +382,71 @@ public class BoardTest {
 		boolean val7=b.checkSpace(6, 0, 1);		//Boat right there
 		assertFalse(val7);
 	}
+	
+	@Test
+	public void testInsertLastPos() {
+		Board b=new Board();
+		MockOb mock=new MockOb();
+		int[][] a=mock.getTablero(2);
+		b.setTablero(a);
+		System.out.println(b.mostrarTablero());
+		//Portaviones
+		boolean value=b.insertBoatLastPosition(0, 5, 0, 9, 5);		//There is a boat there	
+		assertFalse(value);
+		boolean value5=b.insertBoatLastPosition(0, 6, 4, 6, 5);	
+		assertTrue(value5);
+		boolean value6=b.insertBoatLastPosition(6, 7, 6, 8, 5);  //Boat is bigger 	
+		assertFalse(value6);
+		boolean value2=b.insertBoatLastPosition(2, 0, 2, 9, 5);  //Boat is smaller			
+		assertFalse(value2);
+		boolean val=b.insertBoatLastPosition(0, 4, 0, 0, 5);	//There is a boat there		
+		assertFalse(val);
+		boolean val2=b.insertBoatLastPosition(3, 5, 3, 9, 5);	//There is a boat there		
+		assertFalse(val2);
+		boolean val3=b.insertBoatLastPosition(0, 2, 0, 6, 5);	
+		assertFalse(val3);
+		boolean val4=b.insertBoatLastPosition(6, 2, 6, 6, 5);	
+		assertTrue(val4);
+		boolean valfalse=b.insertBoatLastPosition(0, 10, 0, 6, 5);	
+		assertFalse(valfalse);
+		boolean valfalse2=b.insertBoatLastPosition(6, 2, 6, -3, 5);	
+		assertFalse(valfalse2);
+		boolean valfalse3=b.insertBoatLastPosition(6, 2, 6, 2, 5);	
+		assertFalse(valfalse3);
+		boolean valfalse6=b.insertBoatLastPosition(1, 2, 3, 4, 5);	
+		assertFalse(valfalse6);
+		boolean val5=b.insertBoatLastPosition(9, 9, 9, 5, 5);	
+		assertTrue(val5);
+		boolean valfalse4=b.insertBoatLastPosition(6, 2, 7, 2, 5);	
+		assertFalse(valfalse4);
+		System.out.println(b.mostrarTablero());
+		boolean val6=b.insertBoatLastPosition(9, 1, 5, 1, 5);	
+		assertTrue(val6);
+		System.out.println(b.mostrarTablero());
+		boolean val7=b.insertBoatLastPosition(6, 9, 6, 5, 5);	
+		assertFalse(val7);
+		boolean val8=b.insertBoatLastPosition(6, 9, 6, 6, 5);	
+		assertFalse(val8);
+		boolean val9=b.insertBoatLastPosition(3, 3, 3, 7, 5);	
+		assertFalse(val9);
+		boolean val10=b.insertBoatLastPosition(8, 8, 8, 7, 5);	
+		assertFalse(val10);
+		boolean val11=b.insertBoatLastPosition(4, 9, 4, 5, 5);	
+		assertFalse(val11);
+		
+		Board b2=new Board();
+		MockOb mock2=new MockOb();
+		int[][] a2=mock2.getTablero(2);
+		b2.setTablero(a2);
+		System.out.println(b2.mostrarTablero());
+		boolean val14=b2.insertBoatLastPosition(5, 0, 5, 4, 5);	
+		assertTrue(val14);
+		boolean val12=b2.insertBoatLastPosition(4, 3, 7, 3, 4);	
+		assertFalse(val12);
+		System.out.println(b2.mostrarTablero());
+		boolean val13=b2.insertBoatLastPosition(6, 3, 3, 3, 4);	
+		assertFalse(val13);
+		boolean val15=b2.insertBoatLastPosition(6, 3, 4, 3, 4);	
+		assertFalse(val15);
+	}
 }
