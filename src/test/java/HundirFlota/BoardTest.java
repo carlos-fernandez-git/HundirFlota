@@ -91,35 +91,50 @@ public class BoardTest {
 	public void testInsertBoats1() {
 		Board b=new Board();
 		//When Board is empty
-		boolean res=b.insertBoatfirstpos(0, 0);
+		boolean res=b.insertBoatfirstpos(0, 0, 5);
 		assertTrue(res);
-		boolean res2=b.insertBoatfirstpos(0, 9);
+		boolean res2=b.insertBoatfirstpos(0, 9, 5);
 		assertTrue(res2);
-		boolean res3=b.insertBoatfirstpos(9, 0);
+		boolean res3=b.insertBoatfirstpos(9, 0, 5);
 		assertTrue(res3);
-		boolean res4=b.insertBoatfirstpos(9, 9);
+		boolean res4=b.insertBoatfirstpos(9, 9, 5);
 		assertTrue(res4);
-		boolean res5=b.insertBoatfirstpos(4, 5);
+		boolean res5=b.insertBoatfirstpos(4, 5, 5);
 		assertTrue(res5);
-		boolean res6=b.insertBoatfirstpos(-1, 0);
+		boolean res6=b.insertBoatfirstpos(-1, 0, 5);
 		assertFalse(res6);
-		boolean res7=b.insertBoatfirstpos(0, 10);
+		boolean res7=b.insertBoatfirstpos(0, 10, 5);
 		assertFalse(res7);
-		boolean res8=b.insertBoatfirstpos(10, 0);
+		boolean res8=b.insertBoatfirstpos(10, 0, 5);
 		assertFalse(res8);
-		boolean res9=b.insertBoatfirstpos(0, 10);
+		boolean res9=b.insertBoatfirstpos(0, 10, 5);
 		assertFalse(res9);
 		//When the position choosed is occupied
 		MockOb mock=new MockOb();
 		int[][] a=mock.getTablero(1);
 		b.setTablero(a);
-		boolean res10=b.insertBoatfirstpos(0, 1);
+		boolean res10=b.insertBoatfirstpos(0, 1 ,4);
 		assertFalse(res10);
-		boolean res11=b.insertBoatfirstpos(0, 4);
+		boolean res11=b.insertBoatfirstpos(0, 4, 4);
 		assertFalse(res11);
-		boolean res12=b.insertBoatfirstpos(0, 5);
+		boolean res12=b.insertBoatfirstpos(0, 5, 4);
 		assertTrue(res12);
-		
+		//Integration proves
+		MockOb mock2=new MockOb();
+		int[][] a2=mock2.getTablero(2);
+		b.setTablero(a2);
+		boolean value6=b.insertBoatfirstpos(0, 7, 5);	
+		assertFalse(value6);
+		boolean value2=b.insertBoatfirstpos(1, 0, 5);
+		assertFalse(value2);
+		boolean value7=b.checkSpace(0, 9, 5);
+		assertFalse(value7);				
+		boolean value8=b.checkSpace(9, 0, 5);
+		assertTrue(value8);
+		boolean value9=b.checkSpace(9, 4, 5);
+		assertTrue(value9);		
+		boolean value10=b.checkSpace(9, 9, 5);
+		assertTrue(value10);
 	}
 	@Test
 	public void testCheckSpace() {
@@ -325,6 +340,7 @@ public class BoardTest {
 
 		boolean value22=b2.checkSpace(5, 2, 4);
 		assertTrue(value22);
+		
 
 		boolean value23=b2.checkSpace(5, 0, 4);
 		assertTrue(value23);
@@ -340,5 +356,30 @@ public class BoardTest {
 		
 	}
 	
-
+	@Test
+	public void testCheckSpace3() {
+		//The user can not put boats together in the same direction
+		Board b=new Board();
+		MockOb mock=new MockOb();
+		int[][] a=mock.getTablero(6);
+		b.setTablero(a);
+		System.out.println(b.mostrarTablero());
+		//Lancha (1 position)
+		boolean value=b.checkSpace(0, 0, 1);  //Corner
+		assertTrue(value);
+		boolean value5=b.checkSpace(0, 9, 1);	//Corner
+		assertTrue(value5);
+		boolean value6=b.checkSpace(9, 9, 1);	//Corner
+		assertTrue(value6);
+		boolean value2=b.checkSpace(1, 6, 1);		//MidValue
+		assertTrue(value2);
+		boolean val=b.checkSpace(3, 2, 1);		//Boat up there
+		assertFalse(val);
+		boolean val2=b.checkSpace(3, 7, 1);		//Boat down there
+		assertFalse(val2);
+		boolean val6=b.checkSpace(6, 2, 1);		//Boat left there
+		assertFalse(val6);
+		boolean val7=b.checkSpace(6, 0, 1);		//Boat right there
+		assertFalse(val7);
+	}
 }

@@ -112,9 +112,10 @@ public class MockOb  {
 			TableroBuque2[z][1]=1;
 		}
 		boards.add(TableroBuque2);
+		
 	}
 	
-
+		
 
 	public int[][] getTablero(int param) {
 		//System.out.println(boards.size());

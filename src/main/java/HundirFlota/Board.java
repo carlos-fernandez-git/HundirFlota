@@ -186,14 +186,15 @@ public class Board {
 		Tablero=a;
 	}
 	//Check if the user can insert a boat here
-	public boolean insertBoatfirstpos(int fila, int columna) {
+	public boolean insertBoatfirstpos(int fila, int columna, int BoatLeng) {
 		if(fila<0 || fila>9 || columna<0 || columna>9) {
 			return false;
 		}else if(this.getPosicion(fila, columna)!=0) {
 				return false;
 		}else {
 			//Call to checkSpace
-			return true;
+			boolean FreeSpace=checkSpace(fila, columna, BoatLeng);
+			return FreeSpace;
 		}
 		
 	}
@@ -213,7 +214,7 @@ public class Board {
 				}
 			}
 		}
-		if(fila-4>=0) {
+		else if(fila-4>=0) {
 			if(columna-1>=0){
 				if(Tablero[fila][columna-1]!=0 && Tablero[fila-4][columna-1]!=0) {
 					find=false;
@@ -238,7 +239,7 @@ public class Board {
 				}
 			}
 		}
-		if(columna-4>=0) {
+		else if(columna-4>=0) {
 			if(fila+1<10){
 				if(Tablero[fila+1][columna]!=0 && Tablero[fila+1][columna-4]!=0) {
 					find=false;
@@ -267,7 +268,7 @@ public class Board {
 					}
 				}
 			}
-			if(fila-3>=0) {
+			else if(fila-3>=0) {
 				if(columna-1>=0){
 					if(Tablero[fila][columna-1]!=0 && Tablero[fila-3][columna-1]!=0) {
 						find=false;
@@ -292,7 +293,7 @@ public class Board {
 					}
 				}
 			}
-			if(columna-3>=0) {
+			else if(columna-3>=0) {
 				if(fila+1<10){
 					if(Tablero[fila+1][columna]!=0 && Tablero[fila+1][columna-3]!=0) {
 						find=false;
@@ -306,7 +307,30 @@ public class Board {
 			}
 			return find;
 		}
-		else {return false;}
+		else {	//Lancha
+			Boolean find=true;
+			if(fila+1<10) {
+				if(Tablero[fila+1][columna]!=0) {
+						find=false;
+				}
+			}
+			if(fila-1>=0) {
+					if(Tablero[fila-1][columna]!=0) {
+						find=false;
+					}
+			}
+			if(columna+1<10) {
+					if(Tablero[fila][columna+1]!=0) {
+						find=false;
+					}
+			}
+			if(columna-1>=0) {
+					if(Tablero[fila][columna-1]!=0) {
+						find=false;
+					}
+			}
+			return find;	
+		}
 	}
 
 	
