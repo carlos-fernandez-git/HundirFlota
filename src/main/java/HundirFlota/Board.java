@@ -1,9 +1,10 @@
 package HundirFlota;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Board {
-	private Barco barcos;
+	private ArrayList<Barco> barcos = new ArrayList<Barco>();
 	private int filas;
 	private int columnas;
 	private int[][] Tablero;
@@ -29,6 +30,7 @@ public class Board {
 				Tablero[i][j]=0;
 			}
 		}
+
 	}
 	
 
@@ -196,6 +198,15 @@ public class Board {
 			boolean FreeSpace=checkSpace(fila, columna, BoatLeng);
 			if(FreeSpace==true && BoatLeng==1) {
 				Tablero[fila][columna]=1;
+				ArrayList<int[]> positions = new ArrayList<int[]>();
+				int[] pos = new int[3];
+				pos[0]=fila;
+				pos[1]=columna;
+				pos[2]=0;
+				positions.add(pos);	
+				Barco barco = new Barco(positions,BoatLeng);
+				barcos.add(barco);
+				
 			}
 			return FreeSpace;
 		}
@@ -337,6 +348,7 @@ public class Board {
 	}
 
 	public boolean insertBoatLastPosition(int filaIn, int columnaIn, int filaFi, int columnaFi, int BoatLeng) {
+		ArrayList<int[]> positions = new ArrayList<int[]>();
 		if(filaFi<0 || filaFi>9 || columnaFi<0 || columnaFi>9) {
 			return false;
 		}else if(this.getPosicion(filaFi, columnaFi)!=0) {
@@ -362,6 +374,12 @@ public class Board {
 						}else {
 							for(int i=columnaIn; i<=columnaFi; i++) {
 								Tablero[filaIn][i]=1;
+								int[] pos = new int[3];
+								pos[0]=filaIn;
+								pos[1]=i;
+								pos[2]=0;
+								positions.add(pos);							
+										
 							}
 						}			
 					}
@@ -382,6 +400,11 @@ public class Board {
 						}else {
 							for(int i=columnaFi; i<=columnaIn; i++) {
 								Tablero[filaIn][i]=1;
+								int[] pos = new int[3];
+								pos[0]=filaIn;
+								pos[1]=i;
+								pos[2]=0;
+								positions.add(pos);		
 							}
 						}
 						
@@ -403,6 +426,11 @@ public class Board {
 						}else {
 							for(int i=filaIn; i<=filaFi; i++) {
 								Tablero[i][columnaIn]=1;
+								int[] pos = new int[3];
+								pos[0]=i;
+								pos[1]=columnaIn;
+								pos[2]=0;
+								positions.add(pos);
 							}
 						}
 						
@@ -424,11 +452,18 @@ public class Board {
 						}else {
 							for(int i=filaFi; i<=filaIn; i++) {
 								Tablero[i][columnaIn]=1;
+								int[] pos = new int[3];
+								pos[0]=i;
+								pos[1]=columnaIn;
+								pos[2]=0;
+								positions.add(pos);
 							}
 						}
 						
 					}
 				}
+				Barco barco = new Barco(positions,BoatLeng);
+				barcos.add(barco);
 				return true;
 			}
 		}
