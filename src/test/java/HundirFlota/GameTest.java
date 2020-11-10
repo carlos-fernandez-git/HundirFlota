@@ -5,22 +5,27 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class GameTest {
-
-	@Test
-	public void testGet() {
-		Game b=new Game();
-		String res_0 = "Hola"; 
-		assertEquals(res_0,b.getGame()); 
-	}
 	
 	@Test
-	public void testsetTablero() {
-		Game b=new Game();
-	}
-	@Test
 	public void testsetPlayers() {
-		Game b=new Game();
+		Player[] players=new Player[2];
+		players[0] =new Player();
+		players[0].setNombre("One");
+		players[0].setTurno(1);
+		players[1] =new Player();
+		players[1].setNombre("Two");
+		players[1].setNombre("Two");
+		players[1].setTurno(2);
+		Game g=new Game();
+		g.crearJugadores(players);
+		assertEquals(players[0].getNombre(), "One");
+		assertEquals(players[0].getTurno(), 1);
+		assertEquals(players[1].getNombre(), "Two");
+		assertEquals(players[1].getTurno(), 2);
+
 	}
+
+
 	@Test
 	public void testsetPlay() {
 		Game b=new Game();
