@@ -22,17 +22,17 @@ public class GameTest {
 		assertEquals(players[0].getTurno(), 1);
 		assertEquals(players[1].getNombre(), "Two");
 		assertEquals(players[1].getTurno(), 2);
-
 	}
 
 
 	@Test
-	public void testsetPlay() {
+	public void testPlay() {
 		Game b=new Game();
 	}
 	@Test
 	public void testconstructor() {
 		Game b=new Game();
+		assertEquals(b.getPlayers().length, 2);
 	}
 
 }

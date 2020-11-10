@@ -7,7 +7,7 @@ public class Player {
 	private String [][] tableroInfo;
 
 	
-	public Player(String n) {
+	public Player() {
 		this.iniciarTableroInfo();
 	}
 	public void setNombre(String nombre) {
