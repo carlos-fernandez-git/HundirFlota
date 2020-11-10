@@ -25,7 +25,9 @@ public class PlayerTest {
 		Player p = new Player();
 		Board b = new Board();
 		assertNotNull(p.getTablero());
-		assertEquals(b,p.getTablero());
+		assertEquals(b.getColumnas(),p.getTablero().getColumnas());
+		assertEquals(b.getFilas(),p.getTablero().getFilas());
+		assertEquals(b.getColumnas(),p.getTablero().getColumnas());
 		
 	}
 	@Test
