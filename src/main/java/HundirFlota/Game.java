@@ -25,6 +25,12 @@ public class Game {
 			players[i].setTurno(listP[i].getTurno());
 		}
 	}
+	public boolean getWinner() {
+		return winner;
+	}
+	public int getTurn() {
+		return Turn;
+	}
 	public void play() {
 		//Put boats on the board
 		insertAirCraft(0);

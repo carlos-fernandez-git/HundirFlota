@@ -42,7 +42,7 @@ public class Player {
 	
 	public boolean disparar(Board tablero,int fila,int columna) {
 		boolean hit=false;
-		if(fila>tablero.getFilas() || columna>tablero.getColumnas()){
+		if(fila>tablero.getFilas() || columna>tablero.getColumnas() || fila<0 || columna<0){
 			hit=false;
 			System.out.println("WRONG COORDS: "+fila+" "+columna);
 			
