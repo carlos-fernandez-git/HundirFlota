@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
-
+	
 public class BoardTest {
 
 	@Test
@@ -24,7 +24,20 @@ public class BoardTest {
 		assertEquals(0, tablero[9][9]);
 		assertEquals(0, tablero[5][4]);
 	}
-	
+	@Test
+	public void testGetBarcos(){
+
+		MockOb2 mock=new MockOb2();
+		Board b = new Board();
+		b.insertBoatLastPosition(1, 0, 1, 4, 5);
+		b.insertBoatLastPosition(9, 1, 9, 4, 4);
+		b.insertBoatfirstpos(5, 5, 1);
+		assertNotNull(b.getBarcos());
+		assertEquals(b.getBarcos().get(0).getTypeOfBoat(),mock.getBarco(0).getTypeOfBoat());
+		assertEquals(b.getBarcos().get(1).getTypeOfBoat(),mock.getBarco(1).getTypeOfBoat());
+		assertEquals(b.getBarcos().get(2).getTypeOfBoat(),mock.getBarco(2).getTypeOfBoat());
+		
+	}
 	@Test
 	public void testGet() {
 		Board b=new Board();

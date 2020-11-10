@@ -48,6 +48,7 @@ public class Player {
 			
 		}else if(tablero.getPosicion(fila, columna) == 1) {
 			hit=true;
+			
 			System.out.println("HIT SHOOT on: "+fila+" "+columna);
 			this.tableroInfo[fila][columna]="[X]";
 			

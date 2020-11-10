@@ -15,7 +15,7 @@ public class MockOb2 {
 		ArrayList<int[]> positions2 = new ArrayList<int[]>();
 		ArrayList<int[]> positions3 = new ArrayList<int[]>();
 		int[] pos1_1 = new int[3];
-		pos1_1[0]=1;
+		pos1_1[0]=1; 
 		pos1_1[1]=0;
 		pos1_1[2]=0;
 		positions1.add(getPos(pos1_1));
@@ -95,10 +95,6 @@ public class MockOb2 {
 		return barcos.get(i);
 	}
 	public  int[] getPos(int [] x){
-		return x;
-		
-	}
-
-
-	
+		return x;	
+	}	
 }

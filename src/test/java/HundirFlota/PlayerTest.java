@@ -57,6 +57,7 @@ public class PlayerTest {
 		assertEquals("[O]", tablero[9][9]);
 		assertEquals("[O]", tablero[5][4]);
 		
+		
 	}
 	@Test
 	public void testsetygetNombre() {

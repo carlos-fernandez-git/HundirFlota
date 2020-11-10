@@ -157,7 +157,10 @@ public class Board {
 		}
 	}
 	*/
-
+	public ArrayList<Barco> getBarcos() {
+		ArrayList<Barco> NULL = null;
+		return NULL;
+	}
 	public int[][] getTablero() {
 		return Tablero;
 	}
