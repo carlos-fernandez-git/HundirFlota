@@ -9,11 +9,13 @@ public class PlayerTest {
 	@Test
 	public void testconstructor() {
 		Player p1 = new Player();
+		p1.setNombre("Arnau");
 		assertNotNull(p1.getTablero());
 		assertEquals("Arnau",p1.getNombre());
 		assertEquals(0,p1.getTurno());
-		
+	
 		Player p2 = new Player();
+		p2.setNombre("Arnau");
 		assertNotNull(p2.getTablero());
 		assertEquals("Arnau",p2.getNombre());
 		assertEquals(0,p2.getTurno());
