@@ -3,10 +3,11 @@ package HundirFlota;
 public class Player {
 	private String Nombre;
 	private int turno;
+	private Board tablero;
 	private String [][] tableroInfo;
 
 	
-	public Player() {
+	public Player(String n) {
 		this.iniciarTableroInfo();
 	}
 	public void setNombre(String nombre) {
