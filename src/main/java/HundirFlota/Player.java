@@ -7,8 +7,12 @@ public class Player {
 	private String [][] tableroInfo;
 
 	
-	public Player(String n) {
+	public Player() {
 		this.iniciarTableroInfo();
+
+	}
+	public Board getTablero() {
+		return new Board();
 	}
 	public void setNombre(String nombre) {
 		this.Nombre=nombre;
