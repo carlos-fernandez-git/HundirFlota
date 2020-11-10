@@ -5,6 +5,5 @@ public class Main {
 		return "Hola";
 	}
 	public static void main(String[]args) {
-
 	}
 }

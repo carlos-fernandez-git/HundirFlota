@@ -8,6 +8,9 @@ public class Game {
 	public Game() {
 		players=new Player[2];
 	}
+	public Player getPlayer(int num) {
+		return players[num];
+	}
 	public Player[] getPlayers() {
 		return players;
 	}
@@ -18,8 +21,6 @@ public class Game {
 			players[i].setTurno(listP[i].getTurno());
 		}
 	}
-	public void play() {
-		
-	}
+
 
 }

@@ -22,23 +22,9 @@ public class GameTest {
 		assertEquals(players[0].getTurno(), 1);
 		assertEquals(players[1].getNombre(), "Two");
 		assertEquals(players[1].getTurno(), 2);
+		assertEquals(g.getPlayer(0).getNombre(), "One");
 	}
 
-
-	@Test
-	public void testPlay() {
-		Game g=new Game();
-		Player[] players=new Player[2];
-		players[0] =new Player();
-		players[0].setNombre("One");
-		players[0].setTurno(1);
-		players[1] =new Player();
-		players[1].setNombre("Two");
-		players[1].setNombre("Two");
-		players[1].setTurno(2);
-		g.crearJugadores(players);
-		//create board for every player
-	}
 	@Test
 	public void testconstructor() {
 		Game b=new Game();

@@ -24,7 +24,13 @@ public class BoardTest {
 		assertEquals(0, tablero[9][9]);
 		assertEquals(0, tablero[5][4]);
 	}
-
+	
+	@Test
+	public void testGet() {
+		Board b=new Board();
+		assertEquals(b.getFilas(), 10);
+		assertEquals(b.getColumnas(), 10);
+	}
 	
 	//First implementation of Create Boats test (After creating this test, we make the full function
 	// on Board.java but the test find errors always)
