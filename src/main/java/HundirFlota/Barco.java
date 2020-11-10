@@ -52,10 +52,9 @@ class Barco {
 			return "portaaviones";
 		}else if(this.length==4) {
 			return "buque";
-		}else if(this.length==1){
+		}else{
 			return "lancha";
 		}
-		return typeOfBoat;
 	}
 	public void ifHit(int row, int col) {
 		for(int i=0; i<positions.size();i++) {

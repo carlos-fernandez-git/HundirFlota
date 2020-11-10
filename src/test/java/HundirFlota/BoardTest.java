@@ -119,6 +119,8 @@ public class BoardTest {
 		assertFalse(res11);
 		boolean res12=b.insertBoatfirstpos(0, 5, 4);
 		assertTrue(res12);
+		boolean res13=b.insertBoatfirstpos(9, 9, 1);
+		assertTrue(res13);
 		//Integration proves
 		MockOb mock2=new MockOb();
 		int[][] a2=mock2.getTablero(2);
@@ -135,6 +137,8 @@ public class BoardTest {
 		assertTrue(value9);		
 		boolean value10=b.checkSpace(9, 9, 5);
 		assertTrue(value10);
+		boolean value11=b.checkSpace(9, 9, 1);
+		assertTrue(value11);
 	}
 	@Test
 	public void testCheckSpace() {
