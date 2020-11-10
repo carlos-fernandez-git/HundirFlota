@@ -9,6 +9,10 @@ public class Player {
 	
 	public Player() {
 		this.iniciarTableroInfo();
+
+	}
+	public Board getTablero() {
+		return new Board();
 	}
 	public void setNombre(String nombre) {
 		this.Nombre=nombre;
