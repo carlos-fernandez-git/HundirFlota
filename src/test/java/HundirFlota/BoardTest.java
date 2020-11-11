@@ -91,16 +91,17 @@ public class BoardTest {
 	}
 	@Test
 	public void testMostrarTablero() {
-		String res_0="0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n"
-				+  "0 0 0 0 0 0 0 0 0 0 \n";
+		String res_0="\n    0:1:2:3:4:5:6:7:8:9\n\n"
+				+  "0:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "1:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "2:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "3:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "4:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "5:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "6:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "7:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "8:  0 0 0 0 0 0 0 0 0 0 \n"
+				+  "9:  0 0 0 0 0 0 0 0 0 0 \n";
 		Board tablero= new Board();
 		Assert.assertEquals(tablero.mostrarTablero(), res_0);
 		
@@ -496,5 +497,94 @@ public class BoardTest {
 		assertFalse(val13);
 		boolean val15=b2.insertBoatLastPosition(6, 3, 4, 3, 4);	
 		assertFalse(val15);
+		boolean val16=b2.insertBoatLastPosition(6, 3, 6, 3, 4);	
+		assertFalse(val16);
+	}
+	@Test
+	public void testisEveryBoatSunk() {
+	
+		Player p = new Player();
+		p.getTablero().insertBoatLastPosition(1, 0, 1, 4, 5);
+		p.getTablero().insertBoatLastPosition(9, 1, 9, 4, 4);
+		p.getTablero().insertBoatfirstpos(5, 5, 1);
+		
+		p.disparar(p.getTablero(), 5, 5);
+		assertFalse(p.getTablero().isEveryBoatSunk());
+		
+		p.disparar(p.getTablero(), 9, 1);
+		p.disparar(p.getTablero(), 9, 2);
+		p.disparar(p.getTablero(), 9, 3);
+		p.disparar(p.getTablero(), 9, 4);
+		assertFalse(p.getTablero().isEveryBoatSunk());
+		
+		p.disparar(p.getTablero(), 1, 0);
+		p.disparar(p.getTablero(), 1, 1);
+		p.disparar(p.getTablero(), 1, 2);
+		p.disparar(p.getTablero(), 1, 3);
+		p.disparar(p.getTablero(), 1, 4);
+		assertTrue(p.getTablero().isEveryBoatSunk());
+	}
+	@Test
+	public void testnumberOfBoatsAlive()  {
+		//We create 1 aircraft, 2 vessels and 3 motor boats
+		Player p = new Player();
+		p.getTablero().insertBoatLastPosition(1, 0, 1, 4, 5);
+		p.getTablero().insertBoatLastPosition(7, 1, 7, 4, 4);
+		p.getTablero().insertBoatLastPosition(9, 1, 9, 4, 4);
+		p.getTablero().insertBoatfirstpos(5, 5, 1);
+		p.getTablero().insertBoatfirstpos(0, 9, 1);
+		p.getTablero().insertBoatfirstpos(3, 3, 1);
+		System.out.println(p.getTablero().mostrarTablero());
+		//We check that we initialized it properly
+		int[] x = new int[3];
+		x=p.getTablero().numberOfBoatsAlive();
+		assertEquals(x[0],1);
+		assertEquals(x[1],2);
+		assertEquals(x[2],3);
+		//We sunk a motor boat
+		p.disparar(p.getTablero(), 5, 5);
+		x=p.getTablero().numberOfBoatsAlive();
+		assertEquals(x[0],1);
+		assertEquals(x[1],2);
+		assertEquals(x[2],2);
+		//We sunk a motor boat
+		p.disparar(p.getTablero(), 0, 9);
+		x=p.getTablero().numberOfBoatsAlive();
+		assertEquals(x[0],1);
+		assertEquals(x[1],2);
+		assertEquals(x[2],1);
+		//We sunk 2 vessels
+		p.disparar(p.getTablero(), 9, 1);
+		p.disparar(p.getTablero(), 9, 2);
+		p.disparar(p.getTablero(), 9, 3);
+		p.disparar(p.getTablero(), 9, 4);
+		
+		p.disparar(p.getTablero(), 7, 1);
+		p.disparar(p.getTablero(), 7, 2);
+		p.disparar(p.getTablero(), 7, 3);
+		p.disparar(p.getTablero(), 7, 4);
+		x=p.getTablero().numberOfBoatsAlive();
+		assertEquals(x[0],1);
+		assertEquals(x[1],0);
+		assertEquals(x[2],1);
+		//We sunk a motor boat
+		p.disparar(p.getTablero(), 3, 3);
+		x=p.getTablero().numberOfBoatsAlive();
+		assertEquals(x[0],1);
+		assertEquals(x[1],0);
+		assertEquals(x[2],0);
+
+		//We sunk the aircraft
+		p.disparar(p.getTablero(), 1, 0);
+		p.disparar(p.getTablero(), 1, 1);
+		p.disparar(p.getTablero(), 1, 2);
+		p.disparar(p.getTablero(), 1, 3);
+		p.disparar(p.getTablero(), 1, 4);
+		x=p.getTablero().numberOfBoatsAlive();
+		assertEquals(x[0],0);
+		assertEquals(x[1],0);
+		assertEquals(x[2],0);
+		
+
 	}
 }

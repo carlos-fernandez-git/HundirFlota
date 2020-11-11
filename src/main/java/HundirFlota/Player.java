@@ -52,10 +52,13 @@ public class Player {
 			return false;
 		}
 		else if(tablero.getPosicion(fila, columna) == 1) {
-			hit=true;
-			
+			hit=true;	
 			System.out.println("HIT SHOOT on: "+fila+" "+columna);
 			this.tableroInfo[fila][columna]="[X]";
+			tablero.getBarco(fila, columna).ifHit(fila, columna);
+			if(tablero.getBarco(fila, columna).isSunk()) {
+				System.out.println("YOU SUNK ONE "+tablero.getBarco(fila, columna).getTypeOfBoat());
+			}
 			
 		}else {
 			hit=false;

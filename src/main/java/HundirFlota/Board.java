@@ -165,7 +165,10 @@ public class Board {
 	}
 	public String mostrarTablero() {
 		String tablero="";
+		tablero="\n    0:1:2:3:4:5:6:7:8:9\n\n";
+
 		for(int i=0;i<this.filas;i++) {
+			tablero=tablero+i+":  ";
 			for(int j=0; j<this.columnas;j++) {
 				tablero = tablero+Tablero[i][j]+" ";
 			}
@@ -351,7 +354,7 @@ public class Board {
 
 	public boolean insertBoatLastPosition(int filaIn, int columnaIn, int filaFi, int columnaFi, int BoatLeng) {
 		ArrayList<int[]> positions = new ArrayList<int[]>();
-		if(filaFi<0 || filaFi>9 || columnaFi<0 || columnaFi>9) {
+		if(filaFi<0 || filaFi>9 || columnaFi<0 || columnaFi>9 || columnaIn==columnaFi && filaIn==filaFi) {
 			return false;
 		}else if(this.getPosicion(filaFi, columnaFi)!=0) {
 				return false;
@@ -480,6 +483,33 @@ public class Board {
 			}
 		}
 		return null;
+	}
+	
+	public boolean isEveryBoatSunk() {
+		for(int i = 0; i<this.getBarcos().size();i++) {
+			if(this.getBarcos().get(i).isSunk()==false) {
+				return false;
+			}
+		}
+		return true;
+	}
+	public int[] numberOfBoatsAlive() {
+		int[] boatsAlive = new int[3];
+		boatsAlive[0]=0;
+		boatsAlive[1]=0;
+		boatsAlive[2]=0;
+		for(int i = 0; i<this.getBarcos().size();i++) {
+			if(this.getBarcos().get(i).isSunk()==false) {
+				if(this.getBarcos().get(i).getTypeOfBoat()=="portaaviones") {
+					boatsAlive[0]++;			
+				}else if(this.getBarcos().get(i).getTypeOfBoat()=="buque") {
+					boatsAlive[1]++;
+				}else {
+					boatsAlive[2]++;
+				}
+			}
+		}
+		return boatsAlive;
 	}
 	
 }
