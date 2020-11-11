@@ -68,6 +68,8 @@ public class PlayerTest {
 		assertFalse(p.disparar(b, 0, -9));
 		assertFalse(p.disparar(b, -2, -3));
 		assertFalse(p.disparar(b, 14, 14));
+		p.disparar(b, 0, 8);
+		assertFalse(p.disparar(b, 0, 8));
 		
 		
 	}

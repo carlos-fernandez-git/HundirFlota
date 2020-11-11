@@ -470,6 +470,16 @@ public class Board {
 			}
 		}
 	}
-	
+	public Barco getBarco(int fila, int columna) {
+		
+		for(int i = 0; i<this.getBarcos().size();i++) {
+			for(int j=0; j<this.getBarcos().get(i).getPositions().size();j++) {
+				if(this.getBarcos().get(i).getPositions().get(j)[0]==fila && this.getBarcos().get(i).getPositions().get(j)[1]==columna) {				
+					return this.getBarcos().get(i);
+				}		
+			}
+		}
+		return null;
+	}
 	
 }

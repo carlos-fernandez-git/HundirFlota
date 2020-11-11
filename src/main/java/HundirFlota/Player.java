@@ -42,11 +42,16 @@ public class Player {
 	
 	public boolean disparar(Board tablero,int fila,int columna) {
 		boolean hit=false;
+
 		if(fila>tablero.getFilas() || columna>tablero.getColumnas() || fila<0 || columna<0){
 			hit=false;
 			System.out.println("WRONG COORDS: "+fila+" "+columna);
 			
-		}else if(tablero.getPosicion(fila, columna) == 1) {
+		}else if(this.tableroInfo[fila][columna]=="[X]") {
+			System.out.println("MISSED SHOOT, TAKE CARE BECAUSE YOU ALREADY SHOT THIS POSTION ON A PREVIOUS TURN");
+			return false;
+		}
+		else if(tablero.getPosicion(fila, columna) == 1) {
 			hit=true;
 			
 			System.out.println("HIT SHOOT on: "+fila+" "+columna);

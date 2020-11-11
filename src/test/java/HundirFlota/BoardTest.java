@@ -39,6 +39,31 @@ public class BoardTest {
 		
 	}
 	@Test
+	public void testgetBarco() {
+		Board b = new Board();
+		b.insertBoatLastPosition(1, 0, 1, 4, 5);
+		b.insertBoatLastPosition(9, 1, 9, 4, 4);
+		b.insertBoatfirstpos(5, 5, 1);
+		assertEquals(b.getBarco(1, 0),b.getBarcos().get(0));
+		assertEquals(b.getBarco(1, 4),b.getBarcos().get(0));
+		assertEquals(b.getBarco(1, 2),b.getBarcos().get(0));
+		assertEquals(b.getBarco(0, 0),null);
+		assertEquals(b.getBarco(0, 0),null);
+		assertNotEquals(b.getBarco(5, 5),b.getBarcos().get(1));
+		
+		assertEquals(b.getBarco(9, 1),b.getBarcos().get(1));
+		assertEquals(b.getBarco(9, 3),b.getBarcos().get(1));
+		assertEquals(b.getBarco(9, 4),b.getBarcos().get(1));
+		assertEquals(b.getBarco(9, 0),null);
+		assertEquals(b.getBarco(8, 1),null);
+		assertNotEquals(b.getBarco(7, 6),b.getBarcos().get(1));
+		
+		assertEquals(b.getBarco(5, 5),b.getBarcos().get(2));
+		assertEquals(b.getBarco(6, 6),null);
+		assertEquals(b.getBarco(4, 4),null);
+		assertNotEquals(b.getBarco(1, 0),b.getBarcos().get(1));	
+	}
+	@Test
 	public void testGet() {
 		Board b=new Board();
 		assertEquals(b.getFilas(), 10);
