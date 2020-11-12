@@ -57,19 +57,18 @@ public class PlayerTest {
 		assertEquals("[O]", tablero[9][9]);
 		assertEquals("[O]", tablero[5][4]);
 		//added new Tests for full coverage
-		MockOb mock=new MockOb();
-		int[][] a=mock.getTablero(2);
-		b.setTablero(a);
+		p.getTablero().insertBoatLastPosition(0, 8, 4, 8, 5);
+		
 		System.out.println(b.mostrarTablero()+"aaaa");
-		p.disparar(b, 0, 8);
+		p.disparar(p.getTablero(), 0, 8);
 		assertEquals("[X]", tablero[0][8]);
-		assertFalse(p.disparar(b, 0, 14));
-		assertFalse(p.disparar(b, -1, 14));
-		assertFalse(p.disparar(b, 0, -9));
-		assertFalse(p.disparar(b, -2, -3));
-		assertFalse(p.disparar(b, 14, 14));
-		p.disparar(b, 0, 8);
-		assertFalse(p.disparar(b, 0, 8));
+		assertFalse(p.disparar(p.getTablero(), 0, 14));
+		assertFalse(p.disparar(p.getTablero(), -1, 14));
+		assertFalse(p.disparar(p.getTablero(), 0, -9));
+		assertFalse(p.disparar(p.getTablero(), -2, -3));
+		assertFalse(p.disparar(p.getTablero(), 14, 14));
+		p.disparar(p.getTablero(), 0, 8);
+		assertFalse(p.disparar(p.getTablero(), 0, 8));
 		
 		
 	}
