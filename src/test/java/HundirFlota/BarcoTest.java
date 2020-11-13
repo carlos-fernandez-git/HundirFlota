@@ -31,12 +31,12 @@ public class BarcoTest {
 		Barco b3 = new Barco(mock.getBarco(2).getPositions(),1);		//create lancha
 		
 		//check if it create properly the ships
-		assertEquals(b.getTypeOfBoat(),"portaaviones");
-		assertEquals(b2.getTypeOfBoat(),"buque");
-		assertEquals(b3.getTypeOfBoat(),"lancha");
-		assertNotEquals(b.getTypeOfBoat(),"buque");
-		assertNotEquals(b2.getTypeOfBoat(),"lancha");
-		assertNotEquals(b3.getTypeOfBoat(),"portaaviones");
+		assertEquals(b.getTypeOfBoat(),"Air Craft Carrier");
+		assertEquals(b2.getTypeOfBoat(),"Vessel");
+		assertEquals(b3.getTypeOfBoat(),"Motor Boat");
+		assertNotEquals(b.getTypeOfBoat(),"Vessel");
+		assertNotEquals(b2.getTypeOfBoat(),"Motor BAoat");
+		assertNotEquals(b3.getTypeOfBoat(),"Air Craft Carrier");
 		
 		//check that positions size is equal as length
 		assertEquals(b.getLength(),b.getPositions().size());

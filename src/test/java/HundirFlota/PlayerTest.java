@@ -44,31 +44,50 @@ public class PlayerTest {
 	@Test
 	public void testDisparar() {
 		Board b = new Board();
-		Player p = new Player();
-		p.iniciarTableroInfo();
-		String [][] tablero=p.getTableroInfo();
-		p.disparar(b, 0, 0);
-		p.disparar(b, 9, 9);
-		p.disparar(b, 5, 4);
-		p.disparar(b, 13, 3);
+		Player p1 = new Player();
+		p1.iniciarTableroInfo();
+		String [][] tablero=p1.getTableroInfo();
+		p1.disparar(b, 0, 0);
+		p1.disparar(b, 9, 9);
+		p1.disparar(b, 5, 4);
+		p1.disparar(b, 13, 3);
 		assertEquals("[O]", tablero[0][0]);
 		assertEquals("[-]", tablero[0][9]);
 		assertEquals("[-]", tablero[9][0]);
 		assertEquals("[O]", tablero[9][9]);
 		assertEquals("[O]", tablero[5][4]);
 		//added new Tests for full coverage
-		p.getTablero().insertBoatLastPosition(0, 8, 4, 8, 5);
+		p1.getTablero().insertBoatLastPosition(0, 8, 4, 8, 5);
 		
 		System.out.println(b.mostrarTablero()+"aaaa");
-		p.disparar(p.getTablero(), 0, 8);
+		p1.disparar(p1.getTablero(), 0, 8);
 		assertEquals("[X]", tablero[0][8]);
-		assertFalse(p.disparar(p.getTablero(), 0, 14));
-		assertFalse(p.disparar(p.getTablero(), -1, 14));
-		assertFalse(p.disparar(p.getTablero(), 0, -9));
-		assertFalse(p.disparar(p.getTablero(), -2, -3));
-		assertFalse(p.disparar(p.getTablero(), 14, 14));
-		p.disparar(p.getTablero(), 0, 8);
-		assertFalse(p.disparar(p.getTablero(), 0, 8));
+		assertFalse(p1.disparar(p1.getTablero(), 0, 14));
+		assertFalse(p1.disparar(p1.getTablero(), -1, 14));
+		assertFalse(p1.disparar(p1.getTablero(), 0, -9));
+		assertFalse(p1.disparar(p1.getTablero(), -2, -3));
+		assertFalse(p1.disparar(p1.getTablero(), 14, 14));
+		p1.disparar(p1.getTablero(), 0, 8);
+		assertFalse(p1.disparar(p1.getTablero(), 0, 8));
+		Player p = new Player();
+		p.getTablero().insertBoatLastPosition(1, 0, 1, 4, 5);
+		p.getTablero().insertBoatLastPosition(9, 1, 9, 4, 4);
+		p.getTablero().insertBoatfirstpos(5, 5, 1);
+		
+		p.disparar(p.getTablero(), 5, 5);
+		assertFalse(p.getTablero().isEveryBoatSunk());
+		
+		p.disparar(p.getTablero(), 9, 1);
+		p.disparar(p.getTablero(), 9, 2);
+		p.disparar(p.getTablero(), 9, 3);
+		p.disparar(p.getTablero(), 9, 4);
+		assertFalse(p.getTablero().isEveryBoatSunk());
+		
+		p.disparar(p.getTablero(), 1, 0);
+		p.disparar(p.getTablero(), 1, 1);
+		p.disparar(p.getTablero(), 1, 2);
+		p.disparar(p.getTablero(), 1, 3);
+		p.disparar(p.getTablero(), 1, 4);
 		
 		
 	}

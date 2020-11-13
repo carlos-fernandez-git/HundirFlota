@@ -55,7 +55,7 @@ public class Game {
 				}else {
 					int[] infoBoats = players[1].getTablero().numberOfBoatsAlive();
 					System.out.println("INFORMATION OF ENEMY BOATS:");
-					System.out.println("Aircrafts alive: "+infoBoats[0]);
+					System.out.println("Aircrafts Carriers alive: "+infoBoats[0]);
 					System.out.println("Vessels alive: "+infoBoats[1]);
 					System.out.println("Motor Boats alive: "+infoBoats[2]);
 				}
@@ -75,7 +75,7 @@ public class Game {
 				}else {
 					int[] infoBoats = players[0].getTablero().numberOfBoatsAlive();
 					System.out.println("INFORMATION OF ENEMY BOATS:");
-					System.out.println("Aircrafts alive: "+infoBoats[0]);
+					System.out.println("Aircrafts Carriers alive: "+infoBoats[0]);
 					System.out.println("Vessels alive: "+infoBoats[1]);
 					System.out.println("Motor Boats alive: "+infoBoats[2]);
 				}
@@ -85,7 +85,7 @@ public class Game {
 		}
 	}
 	public void insertAirCraft(int player) {
-		System.out.println("Proceed to put 2 aircraft carriers");
+		System.out.println("Proceed to put 2 aircraft Carriers carriers");
 		System.out.println("The length of aircraft carrier is 5");
 		boolean correctValue=false;
 		boolean correctValueTwo=false;

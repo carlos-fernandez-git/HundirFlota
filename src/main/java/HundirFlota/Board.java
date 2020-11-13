@@ -500,9 +500,9 @@ public class Board {
 		boatsAlive[2]=0;
 		for(int i = 0; i<this.getBarcos().size();i++) {
 			if(this.getBarcos().get(i).isSunk()==false) {
-				if(this.getBarcos().get(i).getTypeOfBoat()=="portaaviones") {
+				if(this.getBarcos().get(i).getTypeOfBoat()=="Air Craft Carrier") {
 					boatsAlive[0]++;			
-				}else if(this.getBarcos().get(i).getTypeOfBoat()=="buque") {
+				}else if(this.getBarcos().get(i).getTypeOfBoat()=="Vessel") {
 					boatsAlive[1]++;
 				}else {
 					boatsAlive[2]++;

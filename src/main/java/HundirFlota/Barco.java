@@ -49,11 +49,11 @@ class Barco {
 	}
 	public String checkTypeOfBoat(){
 		if(this.length==5) {
-			return "portaaviones";
+			return "Air Craft Carrier";
 		}else if(this.length==4) {
-			return "buque";
+			return "Vessel";
 		}else{
-			return "lancha";
+			return "Motor Boat";
 		}
 	}
 	public void ifHit(int row, int col) {

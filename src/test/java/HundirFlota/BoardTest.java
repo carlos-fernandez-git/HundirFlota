@@ -154,6 +154,12 @@ public class BoardTest {
 		assertFalse(res8);
 		boolean res9=b.insertBoatfirstpos(0, 10, 5);
 		assertFalse(res9);
+		boolean res20=b.insertBoatfirstpos(-1, -1, 5);
+		assertFalse(res20);
+		boolean res22=b.insertBoatfirstpos(10, 10, 5);
+		assertFalse(res22);
+		boolean res23=b.insertBoatfirstpos(0, -4, 5);
+		assertFalse(res23);
 		//When the position choosed is occupied
 		MockOb mock=new MockOb();
 		int[][] a=mock.getTablero(1);
@@ -430,6 +436,71 @@ public class BoardTest {
 		assertFalse(val6);
 		boolean val7=b.checkSpace(6, 0, 1);		//Boat right there
 		assertFalse(val7);
+		boolean val8=b.checkSpace(4, 0, 5);		
+		assertTrue(val8);
+		boolean val9=b.checkSpace(5, 0, 5);		
+		assertTrue(val9);
+		boolean val10=b.checkSpace(4, 0, 5);		
+		assertTrue(val10);
+		boolean val11=b.checkSpace(3, 0, 4);		
+		assertTrue(val11);
+		boolean val12=b.checkSpace(3, 0, 3);		
+		assertTrue(val12);
+		boolean val13=b.checkSpace(2, 0, 0);		
+		assertFalse(val13);
+		boolean val15=b.checkSpace(3, 0, 5);		
+		assertTrue(val15);
+		boolean val16=b.checkSpace(3, 2, 5);		
+		assertTrue(val16);
+		boolean val17=b.checkSpace(2, 6, 5);		
+		assertTrue(val17);
+		boolean val18=b.checkSpace(2, 0, 5);		
+		assertFalse(val18);
+		boolean val19=b.checkSpace(3, 0, 4);		
+		assertTrue(val19);
+		boolean val20=b.checkSpace(4, 5, 4);		
+		assertTrue(val20);
+		boolean val22=b.checkSpace(6, 0, 4);		
+		assertTrue(val22);
+		boolean val21=b.checkSpace(5, 5, 4);		
+		assertFalse(val21);
+		boolean val23=b.checkSpace(5, 2, 4);		
+		assertTrue(val23);
+		System.out.println(b.mostrarTablero() + "PathCoverageTest");
+		boolean val24=b.checkSpace(5, 6, 4);		
+		assertTrue(val24);
+		boolean val25=b.checkSpace(5, 5, 4);		
+		assertFalse(val25);
+		boolean val26=b.checkSpace(5, 8, 4);		
+		assertFalse(val26);
+		boolean val27=b.checkSpace(4, 2, 4);		
+		assertFalse(val27);
+		boolean val28=b.checkSpace(4, 0, 4);		
+		assertFalse(val28);
+		boolean val29=b.checkSpace(5, 0, 4);		
+		assertTrue(val29);
+		boolean val30=b.checkSpace(5, 4, 4);		
+		assertTrue(val30);
+		boolean val31=b.checkSpace(7, 2, 4);		
+		assertFalse(val31);
+		boolean val32=b.checkSpace(8, 2, 4);		
+		assertTrue(val32);
+		boolean val33=b.checkSpace(6, 2, 4);		
+		assertTrue(val33);
+		boolean val34=b.checkSpace(4, 9, 4);		
+		assertTrue(val34);
+		boolean val35=b.checkSpace(3, 5, 4);		
+		assertFalse(val35);
+		boolean val36=b.checkSpace(6, 5, 4);		
+		assertTrue(val36);
+		boolean val37=b.checkSpace(3, 5, 4);		
+		assertFalse(val37);
+		boolean val38=b.checkSpace(1, 5, 4);		
+		assertTrue(val38);
+		boolean val39=b.checkSpace(2, 5, 4);		
+		assertTrue(val39);
+		boolean val40=b.checkSpace(4, 5, 4);		
+		assertTrue(val40);
 	}
 	
 	@Test
@@ -499,6 +570,7 @@ public class BoardTest {
 		assertFalse(val15);
 		boolean val16=b2.insertBoatLastPosition(6, 3, 6, 3, 4);	
 		assertFalse(val16);
+		
 	}
 	@Test
 	public void testisEveryBoatSunk() {
