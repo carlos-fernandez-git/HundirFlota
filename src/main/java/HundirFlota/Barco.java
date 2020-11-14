@@ -72,6 +72,7 @@ class Barco {
 		this.sunk=true;
 		return sunk;
 	}
+	
 
 	
 }

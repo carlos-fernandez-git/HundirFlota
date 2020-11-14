@@ -118,6 +118,10 @@ public class BarcoTest {
 		assertEquals(b2.getPositions().get(3)[2],1);
 		b2.ifHit(9,4);
 		assertEquals(b2.getPositions().get(3)[2],1);
+	
+		
+		//One time loop
+
 		
 		//lancha test
 		assertEquals(b3.getPositions().get(0)[2],0);
@@ -125,6 +129,9 @@ public class BarcoTest {
 		assertEquals(b2.getPositions().get(0)[2],1);
 		b2.ifHit(5,5);
 		assertEquals(b2.getPositions().get(0)[2],1);
+		
+
+		
 	}
 	@Test
 	public void testIsSunk() {
