@@ -85,6 +85,7 @@ public class Game {
 		}
 	}
 	public void insertAirCraft(int player) {
+		
 		System.out.println("Proceed to put 2 aircraft Carriers carriers");
 		System.out.println("The length of aircraft carrier is 5");
 		boolean correctValue=false;
@@ -94,7 +95,6 @@ public class Game {
 			correctValue=false;
 			correctValueTwo=false;
 			while(!correctValue) {
-
 				System.out.println("Enter the row where you want to put the first coordinate of aircraft carrier");
 				Scanner fila= new Scanner(System.in);
 				int initialFila=fila.nextInt();

@@ -39,6 +39,20 @@ public class Player {
 			}
 		}
 	}
+
+	
+	public String mostrarTableroInfo() {
+		String tablero="\n     0:  1:  2:  3:  4:  5:  6:  7:  8:  9:\n\n";
+
+		for(int i=0;i<10;i++) {
+			tablero=tablero+i+":  ";
+			for(int j=0; j<10;j++) {
+				tablero = tablero+tableroInfo[i][j]+" ";
+			}
+			tablero=tablero+"\n";
+		}
+		return tablero;
+	}
 	
 	public boolean disparar(Board tablero,int fila,int columna) {
 		boolean hit=false;
