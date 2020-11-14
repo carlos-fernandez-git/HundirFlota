@@ -23,6 +23,15 @@ public class GameTest {
 		assertEquals(players[1].getNombre(), "Two");
 		assertEquals(players[1].getTurno(), 2);
 		assertEquals(g.getPlayer(0).getNombre(), "One");
+		
+		//Test with Mock Object
+		MockUpPlayer p=new MockUpPlayer();
+		g.crearJugadores(p.getPlayers());
+		
+		assertEquals(g.getPlayers()[0].getNombre(), "Adri");
+		assertEquals(g.getPlayers()[0].getTurno(), 1);
+		assertEquals(g.getPlayers()[1].getNombre(), "Arnau");
+		assertEquals(g.getPlayers()[1].getTurno(), 2);
 	}
 
 	@Test
