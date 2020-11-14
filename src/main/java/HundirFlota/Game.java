@@ -33,12 +33,18 @@ public class Game {
 	}
 	public void play() {
 		//Put boats on the board
+		System.out.println("PLAYER 1 INSERTION OF BOATS:");
+		System.out.println("----------------------------");
 		insertAirCraft(0);
 		insertVessel(0);
 		insertMotorBoat(0);
+		for (int i = 0; i < 50; ++i) System.out.println();
+		System.out.println("PLAYER 2 INSERTION OF BOATS:");
+		System.out.println("----------------------------");
 		insertAirCraft(1);
 		insertVessel(1);
 		insertMotorBoat(1);
+		for (int i = 0; i < 50; ++i) System.out.println();
 		while(!winner) {
 			if(players[0].getTurno()==Turn) {
 				System.out.println("Shoot turn for "+players[0].getNombre());
