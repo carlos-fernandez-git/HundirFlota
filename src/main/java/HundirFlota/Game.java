@@ -42,7 +42,7 @@ public class Game {
 		while(!winner) {
 			if(players[0].getTurno()==Turn) {
 				System.out.println("Shoot turn for "+players[0].getNombre());
-				//System.out.println(players[0].getTableroInfo());
+				System.out.println(players[0].mostrarTableroInfo());
 				System.out.println("Enter the row that you want to shoot");
 				Scanner fila= new Scanner(System.in);
 				int initialFila=fila.nextInt();
@@ -63,7 +63,7 @@ public class Game {
 				Turn=2;
 			}else {
 				System.out.println("Shoot turn for "+players[1].getNombre());
-				//System.out.println(players[1].getTableroInfo());
+				System.out.println(players[1].mostrarTableroInfo());
 				System.out.println("Enter the row that you want to shoot");
 				Scanner fila= new Scanner(System.in);
 				int initialFila=fila.nextInt();

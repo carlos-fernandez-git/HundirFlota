@@ -8,8 +8,6 @@ public class Main {
 	Player[] players=new Player[2];
 	Player p1= new Player();
 	p1.setNombre("Player 1");
-	System.out.println("xdddd");
-	System.out.println(p1.mostrarTableroInfo());
 	p1.setTurno(1);
 	Player p2=new Player();
 	p2.setNombre("Player 2");

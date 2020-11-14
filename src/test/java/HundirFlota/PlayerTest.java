@@ -31,6 +31,87 @@ public class PlayerTest {
 		
 	}
 	@Test
+	public void testmostrarTableroInfo(){
+		Board b = new Board();
+		Player p1 = new Player();
+		p1.iniciarTableroInfo();
+		String tableroAux="\n     0:  1:  2:  3:  4:  5:  6:  7:  8:  9:\n\n"
+						+ 	"0:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+	"1:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"2:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"3:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"4:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"5:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"6:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"7:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"8:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	"9:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n";
+		assertEquals(tableroAux,p1.mostrarTableroInfo());
+		String [][] tablero=p1.getTableroInfo();
+		p1.disparar(b, 0, 0);
+		p1.disparar(b, 9, 9);
+		p1.disparar(b, 5, 4);
+		p1.disparar(b, 13, 3);
+		String tableroAux2="\n     0:  1:  2:  3:  4:  5:  6:  7:  8:  9:\n\n"
+						+  	 "0:  [O] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+    "1:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "2:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "3:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "4:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "5:  [-] [-] [-] [-] [O] [-] [-] [-] [-] [-] \n"
+						+ 	 "6:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "7:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "8:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "9:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [O] \n";
+
+		assertEquals(tableroAux2,p1.mostrarTableroInfo());
+		b.insertBoatLastPosition(0, 8, 4, 8, 5);
+		//we shoot every position from the boat inserted
+		p1.disparar(b, 0, 8);
+		p1.disparar(b, 1, 8);
+		p1.disparar(b, 2, 8);
+		p1.disparar(b, 3, 8);
+		p1.disparar(b, 4, 8);
+		//we shoot around the boat inserted
+		p1.disparar(b, 0, 7);
+		p1.disparar(b, 1, 7);
+		p1.disparar(b, 2, 7);
+		p1.disparar(b, 3, 7);
+		p1.disparar(b, 4, 7);
+		p1.disparar(b, 5, 7);
+		p1.disparar(b, 5, 8);
+		p1.disparar(b, 5, 9);
+		p1.disparar(b, 0, 9);
+		p1.disparar(b, 1, 9);
+		p1.disparar(b, 2, 9);
+		p1.disparar(b, 3, 9);
+		p1.disparar(b, 4, 9);
+		//we repeat some shoots
+		p1.disparar(b, 1, 9);
+		p1.disparar(b, 2, 9);
+		p1.disparar(b, 3, 9);
+		p1.disparar(b, 4, 9);
+		
+		
+		String tableroAux3="\n     0:  1:  2:  3:  4:  5:  6:  7:  8:  9:\n\n"
+						+  	 "0:  [O] [-] [-] [-] [-] [-] [-] [O] [X] [O] \n"
+						+    "1:  [-] [-] [-] [-] [-] [-] [-] [O] [X] [O] \n"
+						+ 	 "2:  [-] [-] [-] [-] [-] [-] [-] [O] [X] [O] \n"
+						+ 	 "3:  [-] [-] [-] [-] [-] [-] [-] [O] [X] [O] \n"
+						+ 	 "4:  [-] [-] [-] [-] [-] [-] [-] [O] [X] [O] \n"
+						+ 	 "5:  [-] [-] [-] [-] [O] [-] [-] [O] [O] [O] \n"
+						+ 	 "6:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "7:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "8:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [-] \n"
+						+ 	 "9:  [-] [-] [-] [-] [-] [-] [-] [-] [-] [O] \n";
+		assertEquals(tableroAux3,p1.mostrarTableroInfo());
+
+		
+		
+		
+
+	}
+	@Test
 	public void iniciarTableroInfo() {
 		Player b = new Player();
 		b.iniciarTableroInfo();
