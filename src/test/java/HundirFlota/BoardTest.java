@@ -23,6 +23,57 @@ public class BoardTest {
 		assertEquals(0, tablero[9][0]);
 		assertEquals(0, tablero[9][9]);
 		assertEquals(0, tablero[5][4]);
+		//Loop test
+		int[][] Tablero2;
+		Tablero2=new int[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<1;j++) {
+				Tablero2[i][j]=0;
+			}
+		}
+		assertNotEquals(tablero,Tablero2);
+		int[][] Tablero3;
+		Tablero3=new int[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<2;j++) {
+				Tablero3[i][j]=0;
+			}
+		}assertNotEquals(tablero,Tablero3);
+		int[][] Tablero4;
+		Tablero4=new int[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<9;j++) {
+				Tablero4[i][j]=0;
+			}
+		}assertNotEquals(tablero,Tablero4);
+		int[][] Tablero5;
+		Tablero5=new int[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<10;j++) {
+				Tablero5[i][j]=0;
+			}
+		}assertNotEquals(tablero,Tablero5);
+		int[][] Tablero6;
+		Tablero6=new int[10][10];
+		for(int i=0;i<2;i++) {
+			for(int j=0;j<10;j++) {
+				Tablero6[i][j]=0;
+			}
+		}assertNotEquals(tablero,Tablero6);
+		int[][] Tablero7;
+		Tablero7=new int[10][10];
+		for(int i=0;i<9;i++) {
+			for(int j=0;j<10;j++) {
+				Tablero7[i][j]=0;
+			}
+		}assertNotEquals(tablero,Tablero7);
+		int[][] Tablero8;
+		Tablero8=new int[10][10];
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				Tablero8[i][j]=0;
+			}
+		}assertEquals(tablero,Tablero8);
 	}
 	@Test
 	public void testGetBarcos(){
@@ -570,7 +621,35 @@ public class BoardTest {
 		assertFalse(val15);
 		boolean val16=b2.insertBoatLastPosition(6, 3, 6, 3, 4);	
 		assertFalse(val16);
-		
+		//Combination of values
+		boolean valfalse10=b.insertBoatLastPosition(6, 6, 6, 6, 5);	
+		assertFalse(valfalse10);
+		boolean valfalse11=b.insertBoatLastPosition(-1, 6, 6, 6, 5);	
+		assertFalse(valfalse11);
+		boolean valfalse12=b.insertBoatLastPosition(-1, -1, 6, 6, 5);	
+		assertFalse(valfalse12);
+		boolean valfalse13=b.insertBoatLastPosition(-1, -1, -1, -2, 5);	
+		assertFalse(valfalse13);
+		boolean valfalse14=b.insertBoatLastPosition(-1, -1, -1, -2, 5);	
+		assertFalse(valfalse14);
+		boolean valfalse15=b.insertBoatLastPosition(10, 6, 6, 6, 5);	
+		assertFalse(valfalse15);
+		boolean valfalse16=b.insertBoatLastPosition(10, 11, 6, 6, 5);	
+		assertFalse(valfalse16);
+		boolean valfalse17=b.insertBoatLastPosition(10, 11, 12, 6, 5);	
+		assertFalse(valfalse17);
+		boolean valfalse18=b.insertBoatLastPosition(10, 11, 12, 11, 5);	
+		assertFalse(valfalse18);
+		boolean valfalse19=b.insertBoatLastPosition(6, 11, 6, 11, 5);	
+		assertFalse(valfalse19);
+		boolean valfalse20=b.insertBoatLastPosition(6, 6, 6, 11, 5);	
+		assertFalse(valfalse20);
+		boolean valfalse21=b.insertBoatLastPosition(11, 6, 11, 6, 5);	
+		assertFalse(valfalse21);
+		boolean valfalse22=b.insertBoatLastPosition(11, 6, 11, 5, 5);	
+		assertFalse(valfalse22);
+		boolean valfalse23=b.insertBoatLastPosition(6, 11, 4, 12, 5);	
+		assertFalse(valfalse23);
 	}
 	@Test
 	public void testisEveryBoatSunk() {

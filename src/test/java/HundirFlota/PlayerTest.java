@@ -40,6 +40,80 @@ public class PlayerTest {
 		assertEquals("[-]", tablero[9][0]);
 		assertEquals("[-]", tablero[9][9]);
 		assertEquals("[-]", tablero[5][4]);
+		//Loop test
+		String [][] tableroInfo2;
+		tableroInfo2=new String[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<1;j++) {
+				tableroInfo2[i][j]="[-]";
+			}
+		}
+		assertNotEquals(tablero, tableroInfo2);
+		String [][] tableroInfo3;
+		tableroInfo3=new String[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<2;j++) {
+				tableroInfo3[i][j]="[-]";
+			}
+		}
+		
+		assertNotEquals(tablero, tableroInfo3);
+		String [][] tableroInfo4;
+		tableroInfo4=new String[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<9;j++) {
+				tableroInfo4[i][j]="[-]";
+			}
+		}
+		
+		assertNotEquals(tablero, tableroInfo4);
+		String [][] tableroInfo5;
+		tableroInfo5=new String[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<10;j++) {
+				tableroInfo5[i][j]="[-]";
+			}
+		}
+		assertEquals("[-]", tableroInfo5[0][0]);
+		assertNotEquals("[-]", tableroInfo5[9][9]);
+		assertNotEquals("[-]", tableroInfo5[5][4]);
+		assertNotEquals(tablero, tableroInfo5);
+		String [][] tableroInfo6;
+		tableroInfo6=new String[10][10];
+		for(int i=0;i<2;i++) {
+			for(int j=0;j<10;j++) {
+				tableroInfo6[i][j]="[-]";
+			}
+		}
+		assertEquals("[-]", tableroInfo6[0][0]);
+		assertNotEquals("[-]", tableroInfo6[9][9]);
+		assertNotEquals("[-]", tableroInfo6[5][4]);
+		assertNotEquals(tablero, tableroInfo6);
+		String [][] tableroInfo7;
+		tableroInfo7=new String[10][10];
+		for(int i=0;i<9;i++) {
+			for(int j=0;j<10;j++) {
+				tableroInfo7[i][j]="[-]";
+			}
+		}
+		
+		assertNotEquals(tablero, tableroInfo7);
+		String [][] tableroInfo8;
+		tableroInfo8=new String[10][10];
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				tableroInfo8[i][j]="[-]";
+			}
+		}
+		assertEquals("[-]", tableroInfo7[0][0]);
+		assertNotEquals("[-]", tableroInfo7[9][9]);
+		assertEquals("[-]", tableroInfo7[5][4]);
+		assertEquals(tablero, tableroInfo8);
+		assertEquals("[-]", tableroInfo8[0][0]);
+		assertEquals("[-]", tableroInfo8[0][9]);
+		assertEquals("[-]", tableroInfo8[9][0]);
+		assertEquals("[-]", tableroInfo8[9][9]);
+		assertEquals("[-]", tableroInfo8[5][4]);
 	}
 	@Test
 	public void testDisparar() {
