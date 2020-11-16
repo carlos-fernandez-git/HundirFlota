@@ -108,7 +108,6 @@ public class PlayerTest {
 
 		
 		
-		
 
 	}
 	@Test
@@ -121,6 +120,7 @@ public class PlayerTest {
 		assertEquals("[-]", tablero[9][0]);
 		assertEquals("[-]", tablero[9][9]);
 		assertEquals("[-]", tablero[5][4]);
+		
 		//Loop test
 		String [][] tableroInfo2;
 		tableroInfo2=new String[10][10];
@@ -137,8 +137,15 @@ public class PlayerTest {
 				tableroInfo3[i][j]="[-]";
 			}
 		}
-		
+		String [][] tableroInfo9;
+		tableroInfo9=new String[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<5;j++) {
+				tableroInfo9[i][j]="[-]";
+			}
+		}
 		assertNotEquals(tablero, tableroInfo3);
+		assertNotEquals(tablero, tableroInfo9);
 		String [][] tableroInfo4;
 		tableroInfo4=new String[10][10];
 		for(int i=0;i<1;i++) {
@@ -170,6 +177,17 @@ public class PlayerTest {
 		assertNotEquals("[-]", tableroInfo6[9][9]);
 		assertNotEquals("[-]", tableroInfo6[5][4]);
 		assertNotEquals(tablero, tableroInfo6);
+		String [][] tableroInfo10;
+		tableroInfo10=new String[10][10];
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<10;j++) {
+				tableroInfo10[i][j]="[-]";
+			}
+		}
+		assertEquals("[-]", tableroInfo10[0][0]);
+		assertNotEquals("[-]", tableroInfo10[9][9]);
+		assertNotEquals("[-]", tableroInfo10[5][4]);
+		assertNotEquals(tablero, tableroInfo10);
 		String [][] tableroInfo7;
 		tableroInfo7=new String[10][10];
 		for(int i=0;i<9;i++) {
@@ -198,12 +216,13 @@ public class PlayerTest {
 	}
 	@Test
 	public void testDisparar() {
+		//Black box tests with limit values and frontier values
 		Board b = new Board();
 		Player p1 = new Player();
 		p1.iniciarTableroInfo();
 		String [][] tablero=p1.getTableroInfo();
 		p1.disparar(b, 0, 0);
-		p1.disparar(b, 9, 9);
+		assertFalse(p1.disparar(b, 9, 9));
 		p1.disparar(b, 5, 4);
 		p1.disparar(b, 13, 3);
 		assertEquals("[O]", tablero[0][0]);
@@ -211,9 +230,9 @@ public class PlayerTest {
 		assertEquals("[-]", tablero[9][0]);
 		assertEquals("[O]", tablero[9][9]);
 		assertEquals("[O]", tablero[5][4]);
-		//added new Tests for full coverage
+		//White box tests
 		p1.getTablero().insertBoatLastPosition(0, 8, 4, 8, 5);
-		
+		//Included More frontier values
 		System.out.println(b.mostrarTablero()+"aaaa");
 		p1.disparar(p1.getTablero(), 0, 8);
 		assertEquals("[X]", tablero[0][8]);

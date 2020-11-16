@@ -18,12 +18,14 @@ public class BoardTest {
 		assertEquals(num_columnas, tablero[0].length);
 		assertEquals(num_columnas, tablero[9].length);
 		assertEquals(num_columnas, tablero[5].length);
+		//limit and frontier values
 		assertEquals(0, tablero[0][0]);
 		assertEquals(0, tablero[0][9]);
 		assertEquals(0, tablero[9][0]);
 		assertEquals(0, tablero[9][9]);
 		assertEquals(0, tablero[5][4]);
-		//Loop test
+		
+		//Loop testing
 		int[][] Tablero2;
 		Tablero2=new int[10][10];
 		for(int i=0;i<1;i++) {
@@ -38,7 +40,15 @@ public class BoardTest {
 			for(int j=0;j<2;j++) {
 				Tablero3[i][j]=0;
 			}
-		}assertNotEquals(tablero,Tablero3);
+		}
+		int[][] Tablero10;
+		Tablero10=new int[10][10];
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<5;j++) {
+				Tablero10[i][j]=0;
+			}
+		}
+		assertNotEquals(tablero,Tablero10);
 		int[][] Tablero4;
 		Tablero4=new int[10][10];
 		for(int i=0;i<1;i++) {
@@ -60,6 +70,14 @@ public class BoardTest {
 				Tablero6[i][j]=0;
 			}
 		}assertNotEquals(tablero,Tablero6);
+		int[][] Tablero9;
+		Tablero9=new int[10][10];
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<10;j++) {
+				Tablero9[i][j]=0;
+			}
+		}
+		assertNotEquals(tablero,Tablero9);
 		int[][] Tablero7;
 		Tablero7=new int[10][10];
 		for(int i=0;i<9;i++) {
@@ -77,7 +95,7 @@ public class BoardTest {
 	}
 	@Test
 	public void testGetBarcos(){
-
+		//Used mock Object to set boats in a board
 		MockOb2 mock=new MockOb2();
 		Board b = new Board();
 		b.insertBoatLastPosition(1, 0, 1, 4, 5);
@@ -101,10 +119,11 @@ public class BoardTest {
 		assertEquals(b.getBarco(0, 0),null);
 		assertEquals(b.getBarco(0, 0),null);
 		assertNotEquals(b.getBarco(5, 5),b.getBarcos().get(1));
-		
+		//Limit values
 		assertEquals(b.getBarco(9, 1),b.getBarcos().get(1));
 		assertEquals(b.getBarco(9, 3),b.getBarcos().get(1));
 		assertEquals(b.getBarco(9, 4),b.getBarcos().get(1));
+		//White box test
 		assertEquals(b.getBarco(9, 0),null);
 		assertEquals(b.getBarco(8, 1),null);
 		assertNotEquals(b.getBarco(7, 6),b.getBarcos().get(1));
@@ -189,6 +208,7 @@ public class BoardTest {
 		//When Board is empty
 		boolean res=b.insertBoatfirstpos(0, 0, 5);
 		assertTrue(res);
+		//Limit values
 		boolean res2=b.insertBoatfirstpos(0, 9, 5);
 		assertTrue(res2);
 		boolean res3=b.insertBoatfirstpos(9, 0, 5);
@@ -197,6 +217,7 @@ public class BoardTest {
 		assertTrue(res4);
 		boolean res5=b.insertBoatfirstpos(4, 5, 5);
 		assertTrue(res5);
+		//Frontier values + White box test
 		boolean res6=b.insertBoatfirstpos(-1, 0, 5);
 		assertFalse(res6);
 		boolean res7=b.insertBoatfirstpos(0, 10, 5);
@@ -270,6 +291,8 @@ public class BoardTest {
 		//Testing the coverage of the board class at this point we can see that this function is coverage
 		//at 55 per cent, so we have to add more sentences to complete the full coverage
 		
+		//Limit values
+		//And white box tests
 		//vertical space left false
 		boolean value7=b.checkSpace(0, 9, 5);
 		assertFalse(value7);
@@ -318,6 +341,7 @@ public class BoardTest {
 		assertFalse(value16);
 		
 		//at this point we need to check the true cases at the conditions
+		//White box tests
 		
 		//Horizontal space left line true up
 		boolean value17=b2.checkSpace(3, 8, 5);
@@ -354,12 +378,14 @@ public class BoardTest {
 		boolean value25=b2.checkSpace(5, 4, 5);
 		assertTrue(value25);
 		
-		//So after adding more cases to get full coverage, we need to check for the other tipes of boats
+		//So after adding more cases to get full coverage, we need to check for the other types of boats
 		
 	}
 	@Test
 	public void testCheckSpace2() {
 		//The user can not put boats together in the same direction
+		//More white box test to coverage with the new boats
+		//Black Box tests included
 		Board b=new Board();
 		MockOb mock=new MockOb();
 		int[][] a=mock.getTablero(5);
@@ -470,6 +496,7 @@ public class BoardTest {
 		int[][] a=mock.getTablero(6);
 		b.setTablero(a);
 		System.out.println(b.mostrarTablero());
+		//Limit values
 		//Lancha (1 position)
 		boolean value=b.checkSpace(0, 0, 1);  //Corner
 		assertTrue(value);
@@ -489,6 +516,7 @@ public class BoardTest {
 		assertFalse(val7);
 		boolean val8=b.checkSpace(4, 0, 5);		
 		assertTrue(val8);
+		//White box tests
 		boolean val9=b.checkSpace(5, 0, 5);		
 		assertTrue(val9);
 		boolean val10=b.checkSpace(4, 0, 5);		
@@ -561,7 +589,8 @@ public class BoardTest {
 		int[][] a=mock.getTablero(2);
 		b.setTablero(a);
 		System.out.println(b.mostrarTablero());
-		//Portaviones
+		//Combinations of black box test, limit values, frontier values and white box tests
+		//Aircraft carriers
 		boolean value=b.insertBoatLastPosition(0, 5, 0, 9, 5);		//There is a boat there	
 		assertFalse(value);
 		boolean value5=b.insertBoatLastPosition(0, 6, 4, 6, 5);	
@@ -604,7 +633,7 @@ public class BoardTest {
 		assertFalse(val10);
 		boolean val11=b.insertBoatLastPosition(4, 9, 4, 5, 5);	
 		assertFalse(val11);
-		
+		//More white box tests
 		Board b2=new Board();
 		MockOb mock2=new MockOb();
 		int[][] a2=mock2.getTablero(2);
@@ -653,7 +682,7 @@ public class BoardTest {
 	}
 	@Test
 	public void testisEveryBoatSunk() {
-	
+		//Integration + black box test
 		Player p = new Player();
 		p.getTablero().insertBoatLastPosition(1, 0, 1, 4, 5);
 		p.getTablero().insertBoatLastPosition(9, 1, 9, 4, 4);
@@ -661,7 +690,7 @@ public class BoardTest {
 		
 		p.disparar(p.getTablero(), 5, 5);
 		assertFalse(p.getTablero().isEveryBoatSunk());
-		
+		//White box tests
 		p.disparar(p.getTablero(), 9, 1);
 		p.disparar(p.getTablero(), 9, 2);
 		p.disparar(p.getTablero(), 9, 3);
@@ -678,6 +707,7 @@ public class BoardTest {
 	@Test
 	public void testnumberOfBoatsAlive()  {
 		//We create 1 aircraft, 2 vessels and 3 motor boats
+		//Black box and white box tests
 		Player p = new Player();
 		p.getTablero().insertBoatLastPosition(1, 0, 1, 4, 5);
 		p.getTablero().insertBoatLastPosition(7, 1, 7, 4, 4);
