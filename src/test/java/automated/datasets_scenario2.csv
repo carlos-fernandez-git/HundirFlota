@@ -1,0 +1,15 @@
+originRow1;originCol1;destRow1;destCol1;originRow2;originCol2;destRow2;destCol2;expected
+0;0;0;4;2;0;2;4;true
+0;1;0;5;2;1;2;5;true
+0;1;4;1;9;8;5;8;true
+0;1;4;1;9;1;5;1;true
+0;0;4;0;-2;0;0;0;false
+0;0;0;4;a;0;0;0;false
+0;0;0;4;z;0;0;0;false
+0;0;0;4;!;0;0;0;false
+0;0;0;4;-1;0;0;0;false
+0;0;0;4;10;0;0;0;false
+0;0;0;4;-2;0;0;0;false
+0;0;0;4;11;0;0;0;false
+0;0;0;4;0;0;0;4;false
+0;0;0;4;0;7;0;4;false

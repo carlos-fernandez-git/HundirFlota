@@ -8,15 +8,15 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import HundirFlota.Player;
 
 /*
- *  This class performs a Data-driven test of all test cases of the fourth use case scenario. 
+ *  This class performs a Data-driven test of all test cases of the fifth use case scenario. 
  *  */
-public class MockScenario4Test {
+public class MockScenario5Test {
 	private Player player;
 	
 	private static final char CSV_DELIMITER = ';';
-	public static final String CSV_FILE = "datasets_scenario4.csv";
+	public static final String CSV_FILE = "datasets_scenario5.csv";
 	
-	MockScenario4Test() {
+	MockScenario5Test() {
 		player = new Player();
 		player.setNombre("Player 1");
 	}
@@ -30,16 +30,18 @@ public class MockScenario4Test {
     	player.setNombre("Player 1");
 	}
 	
-	/* This test will run 11 times (one time per data set). */
+	/* This test will run 10 times (one time per data set). */
     @ParameterizedTest(name = "{index}: Test with X1Orig={0}, Y1Orig={1}, X1Dest={2}, Y1Dest={3}, "
 			+ "X2Orig={4}, Y2Orig={5}, X2Dest={6}, Y2Dest={7}, "
 			+ "X3Orig={8}, Y3Orig={9}, X3Dest={10}, Y3Dest={11}, "
-			+ "X4Orig={12}, Y3Orig={13}, X3Dest={14}, Y3Dest={15} result: {16}")
+			+ "X4Orig={12}, Y4Orig={13}, X4Dest={14}, Y4Dest={15}, "
+			+ "X5Orig={16}, Y5rig={17}, X5Dest={18}, Y5Dest={19} result: {20}")
     @CsvFileSource(resources = CSV_FILE, delimiter = CSV_DELIMITER, numLinesToSkip = 1)
     public void test(String inputOriginRow1, String inputOriginCol1, String inputDestRow1, String inputDestCol1, 
     		String inputOriginRow2, String inputOriginCol2, String inputDestRow2, String inputDestCol2,
     		String inputOriginRow3, String inputOriginCol3, String inputDestRow3, String inputDestCol3,
     		String inputOriginRow4, String inputOriginCol4, String inputDestRow4, String inputDestCol4,
+    		String inputOriginRow5, String inputOriginCol5, String inputDestRow5, String inputDestCol5,
     		boolean expected) throws Exception {
     	initialize(); // needed for reset player and its board
     	
@@ -49,7 +51,11 @@ public class MockScenario4Test {
     			MockScenario3Test e3 = new MockScenario3Test();
     			e3.setPlayer(e1.getPlayer());
         		if (e3.mockInsertVessel(inputOriginRow3, inputOriginCol3, inputDestRow3, inputDestCol3)) {
-        			assertEquals(expected, e3.mockInsertVessel(inputOriginRow4, inputOriginCol4, inputDestRow4, inputDestCol4));
+        			if (e3.mockInsertVessel(inputOriginRow4, inputOriginCol4, inputDestRow4, inputDestCol4)) {
+        				assertEquals(expected, e3.mockInsertVessel(inputOriginRow5, inputOriginCol5, inputDestRow5, inputDestCol5));
+        			} else { // end fourth mockInsertVessel
+        				assert(false);
+        			}
         		} else { // end third mockInsertVessel
         			assert(false);
         		}
