@@ -15,9 +15,20 @@ import HundirFlota.Player;
  *  This class performs a Data-driven test of all test cases of the second use case scenario. 
  *  */
 @RunWith(Parameterized.class)
-public class MockSecondScenarioTest {
+public class MockScenario2Test {
 	private Player player;
+	
+	MockScenario2Test() {
+		player = new Player();
+		player.setNombre("Player 1");
+	}
+	
+	/* for getting board state */
+	public Player getPlayer() {
+		return player;
+	}
 			
+	/* used only for testing */
 	public void initialize() {
 		player = new Player();
     	player.setNombre("Player 1");
@@ -62,11 +73,14 @@ public class MockSecondScenarioTest {
         return tcs;
     }
 
+	// first scenario data
     private Object inputOriginRow1, inputOriginCol1, inputDestinationRow1, inputDestinationCol1;
+    
+    // second scenario data
     private Object inputOriginRow2, inputOriginCol2, inputDestinationRow2, inputDestinationCol2;
-    boolean expected;
+    private boolean expected;
 
-    public MockSecondScenarioTest(Object inputOriginRow1, Object inputOriginCol1, Object inputDestinationRow1, Object inputDestinationCol1, 
+    public MockScenario2Test(Object inputOriginRow1, Object inputOriginCol1, Object inputDestinationRow1, Object inputDestinationCol1, 
     		Object inputOriginRow2, Object inputOriginCol2, Object inputDestinationRow2, Object inputDestinationCol2, boolean expected) {
         this.inputOriginRow1 = inputOriginRow1;
         this.inputOriginCol1 = inputOriginCol1;
@@ -81,36 +95,29 @@ public class MockSecondScenarioTest {
         this.expected = expected;
     }
     
-    /* Executes each data set of each test case. */
-    private boolean insertAirCraft(Object inputOriginRow1, Object inputOriginCol1, Object inputDestinationRow1, Object inputDestinationCol1, 
+    /* Executes each data set of the first scenario and returns true only if all steps are correct. */
+    public boolean insertAirCraft(Object inputOriginRow1, Object inputOriginCol1, Object inputDestinationRow1, Object inputDestinationCol1, 
     		Object inputOriginRow2, Object inputOriginCol2, Object inputDestinationRow2, Object inputDestinationCol2) {
-    	
     	boolean isCorrect = false;
-		
-		try {
-    		if(player.getTablero().insertBoatfirstpos((int) inputOriginRow1, (int) inputOriginCol1, 5)) {
-    			if(player.getTablero().insertBoatLastPosition((int) inputOriginRow1, (int) inputOriginCol1, 
-    					(int) inputDestinationRow1, (int) inputDestinationCol1, 5)) {
-            		if(player.getTablero().insertBoatfirstpos((int) inputOriginRow2, (int) inputOriginCol2, 5)) {
-            			if(player.getTablero().insertBoatLastPosition((int) inputOriginRow2, (int) inputOriginCol2, 
-            					(int) inputDestinationRow2, (int) inputDestinationCol2, 5)) {
-            				isCorrect = true;
-            			}
-            		}
-    			}
-    		}
-		}
-		catch(ClassCastException ex) {
-			 //ex.printStackTrace(); // uncomment line for debug purposes
-		}
+    	
+    	MockScenario1Test e1 = new MockScenario1Test();
+    	// tries to insert first 5 cells ship
+    	if (e1.insertAirCraft(inputOriginRow1, inputOriginCol1, inputDestinationRow1, inputDestinationCol1)) {
+    		// tries to insert second 5 cells ship
+        	if (e1.insertAirCraft(inputOriginRow2, inputOriginCol2, inputDestinationRow2, inputDestinationCol2)) {
+        		isCorrect = true;
+        	}
+    	}
+    	
+    	this.player = e1.getPlayer();
     		
 		return isCorrect;
 	}
 
-    /* This test will run 8 times, it executes every data set row. */
+    /* This test will run 8 times, it executes every data set row of each test case. */
     @Test
     public void test() {
-    	initialize(); // needed for creating new player and board
+    	initialize(); // needed for reset player and its board
     	
     	assertEquals(expected, insertAirCraft(inputOriginRow1, inputOriginCol1, inputDestinationRow1, inputDestinationCol1, 
     			inputOriginRow2, inputOriginCol2, inputDestinationRow2, inputDestinationCol2));
